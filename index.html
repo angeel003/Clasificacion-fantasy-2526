@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resultados Fantasy</title>
+<title>Fantasy League 2025</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
     body {
@@ -12,23 +12,31 @@
         background-color: #f0f0f0;
         color: #333;
     }
-    h1, h2 {
-        text-align: center;
-        margin: 40px 0 20px;
-    }
     h1 {
+        text-align: center;
+        margin: 40px 0 10px;
         font-size: 3em;
         font-weight: 700;
     }
+    p.intro {
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 40px;
+    }
     h2 {
+        text-align: center;
         font-size: 2em;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
+        padding: 10px;
+        background-color: #e0e0e0;
+        display: inline-block;
+        border-radius: 5px;
     }
     section {
         padding: 40px 20px;
     }
-    .bg1 { background-color: #e0e0e0; }
-    .bg2 { background-color: #f5f5f5; }
+    .bg1 { background-color: #f8f8f8; }
+    .bg2 { background-color: #f0f0f0; }
     table {
         margin: 0 auto;
         border-collapse: collapse;
@@ -39,47 +47,23 @@
         padding: 12px 15px;
         text-align: center;
         border: 1px solid #ccc;
-        transition: all 0.3s ease;
     }
-    tr:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        background-color: #fafafa;
+    th {
+        background-color: #dcdcdc;
+        font-weight: bold;
     }
     tr.top1 { background-color: #fff8e1; font-size: 1.2em; font-weight: bold; }
     tr.top2 { background-color: #fffde7; font-size: 1.1em; font-weight: bold; }
     tr.top3 { background-color: #fffde7; font-weight: bold; }
     tr.bottom2 { background-color: #ffe5e5; }
     tr.bottom1 { background-color: #ffe5e5; }
-    .patrocinadores {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 80px;
-        margin-top: 40px;
-    }
-    .patrocinador {
-        text-align: center;
-    }
-    .patrocinador img {
-        max-width: 150px;
-        height: auto;
-        display: block;
-        margin: 0 auto 10px;
-    }
-    footer {
-        text-align: center;
-        padding: 20px;
-        background-color: #dcdcdc;
-        font-size: 0.9em;
-    }
 </style>
 </head>
 <body>
 
 <header>
     <h1>Fantasy League 2025</h1>
-    <p style="text-align:center; font-size:1.2em;">Resultados oficiales y clasificación jornada a jornada</p>
+    <p class="intro">Resultados oficiales y clasificación jornada a jornada</p>
 </header>
 
 <section class="bg1">
@@ -116,28 +100,6 @@
     </table>
 </section>
 
-<section class="bg1">
-    <h2>Nuestros Patrocinadores</h2>
-    <div class="patrocinadores">
-        <div class="patrocinador">
-            <img src="ruta-a-dessert-links.png" alt="Dessert Links">
-            <p>Dessert<br>Links</p>
-        </div>
-        <div class="patrocinador">
-            <img src="ruta-a-three-world.png" alt="Three World">
-            <p>Three<br>World</p>
-        </div>
-        <div class="patrocinador">
-            <img src="ruta-a-vpv-paraiso.png" alt="VPV Paraíso">
-            <p>VPV<br>Paraíso</p>
-        </div>
-    </div>
-</section>
-
-<footer>
-    Página web oficial de Fantasy League 2025
-</footer>
-
 <script>
 async function fetchCSV(url) {
     const response = await fetch(url);
@@ -157,7 +119,7 @@ function construirTablaGlobal(data) {
     tabla.innerHTML = "";
 
     data.forEach((row, index) => {
-        let dinero = row["Total Dinero"].replace(",", ".");
+        let dinero = row["Total Dinero"].replace(",", ".").replace(/"/g, "");
         dinero = parseFloat(dinero).toFixed(2) + " €";
 
         const tr = document.createElement("tr");
@@ -187,7 +149,7 @@ function construirTablaJornada(data) {
     tabla.innerHTML = "";
 
     data.forEach(row => {
-        let dinero = row["Dinero"].replace(",", ".");
+        let dinero = row["Dinero"].replace(",", ".").replace(/"/g, "");
         dinero = parseFloat(dinero).toFixed(2) + " €";
 
         const tr = document.createElement("tr");
