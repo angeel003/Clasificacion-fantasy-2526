@@ -2,230 +2,215 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Desert Links League 25/26</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resultados Fantasy</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-body {
-    font-family: 'Roboto', sans-serif;
-    background: #f0f2f5;
-    margin: 0;
-}
-header {
-    background: linear-gradient(135deg, #343a40, #495057);
-    color: white;
-    padding: 80px 15px 50px;
-    text-align: center;
-}
-header h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3.5rem;
-    margin-bottom: 15px;
-    letter-spacing: 2px;
-    font-weight: 700;
-}
-header p {
-    font-size: 1.3rem;
-    opacity: 0.85;
-    margin-bottom: 20px;
-}
-header .intro {
-    max-width: 700px;
-    margin: 0 auto;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    opacity: 0.9;
-}
-section {
-    padding: 60px 15px;
-    text-align: center;
-}
-.section-alt {
-    background: #e9ecef;
-}
-table {
-    width: 80%;
-    max-width: 900px;
-    margin: 0 auto 40px;
-    border-collapse: collapse;
-    background: white;
-}
-th, td {
-    padding: 14px 18px;
-    border-bottom: 1px solid #ddd;
-    text-align: center;
-}
-thead {
-    background: #6c757d;
-    color: white;
-}
-tbody tr {
-    transition: all 0.3s ease-in-out;
-    cursor: default;
-}
-/* Hover filas normales: relieve + color */
-tbody tr:not(.medal-1):not(.medal-2):not(.medal-3):not(.last-2):hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-    background-color: #f1f5f9;
-}
-/* Top 3 */
-.medal-1 { background: #fff8e1; font-size: 1.3rem; font-weight: bold; }
-.medal-2 { background: #f0f0f0; font-size: 1.2rem; font-weight: bold; }
-.medal-3 { background: #fff4e6; font-size: 1.1rem; font-weight: bold; }
-/* Últimos 2 */
-.last-2 { background: #ffe6e6; }
-/* Patrocinadores */
-.patrocinadores {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 50px;
-    margin-top: 30px;
-}
-.patrocinador-card {
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.patrocinador-card img {
-    max-width: 120px;
-    display: block;
-    margin: 0 auto 8px;
-}
-.patrocinador-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-}
-/* Footer */
-footer {
-    background: #343a40;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-}
-footer p {
-    font-size: 0.95rem;
-    margin: 0;
-    opacity: 0.8;
-}
-h2 {
-    margin-bottom: 35px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
+    body {
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+    }
+    h1, h2 {
+        text-align: center;
+        margin: 40px 0 20px;
+    }
+    h1 {
+        font-size: 3em;
+        font-weight: 700;
+    }
+    h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    section {
+        padding: 40px 20px;
+    }
+    .bg1 { background-color: #e0e0e0; }
+    .bg2 { background-color: #f5f5f5; }
+    table {
+        margin: 0 auto;
+        border-collapse: collapse;
+        width: 90%;
+        max-width: 1000px;
+    }
+    th, td {
+        padding: 12px 15px;
+        text-align: center;
+        border: 1px solid #ccc;
+        transition: all 0.3s ease;
+    }
+    tr:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        background-color: #fafafa;
+    }
+    tr.top1 { background-color: #fff8e1; font-size: 1.2em; font-weight: bold; }
+    tr.top2 { background-color: #fffde7; font-size: 1.1em; font-weight: bold; }
+    tr.top3 { background-color: #fffde7; font-weight: bold; }
+    tr.bottom2 { background-color: #ffe5e5; }
+    tr.bottom1 { background-color: #ffe5e5; }
+    .patrocinadores {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 80px;
+        margin-top: 40px;
+    }
+    .patrocinador {
+        text-align: center;
+    }
+    .patrocinador img {
+        max-width: 150px;
+        height: auto;
+        display: block;
+        margin: 0 auto 10px;
+    }
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #dcdcdc;
+        font-size: 0.9em;
+    }
 </style>
 </head>
 <body>
 
 <header>
-<h1>Desert Links League 25/26</h1>
-<p>Página web oficial</p>
-<div class="intro">
-Bienvenidos a la página oficial de la Desert Links League 25/26. Aquí podrás consultar los resultados de cada jornada, la clasificación general y mantenerte al día con nuestros patrocinadores. ¡Que comience la competición!
-</div>
+    <h1>Fantasy League 2025</h1>
+    <p style="text-align:center; font-size:1.2em;">Resultados oficiales y clasificación jornada a jornada</p>
 </header>
 
-<section>
-<h2>Clasificación General</h2>
-<table id="globalTable">
-<thead>
-<tr>
-<th>Jugador</th>
-<th>Total Puntos</th>
-<th>Total Dinero</th>
-</tr>
-</thead>
-<tbody></tbody>
-</table>
+<section class="bg1">
+    <h2>Clasificación General</h2>
+    <table id="tabla-global">
+        <thead>
+            <tr>
+                <th>Jugador</th>
+                <th>Puntos</th>
+                <th>Dinero</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Se llenará por JavaScript -->
+        </tbody>
+    </table>
 </section>
 
-<section class="section-alt">
-<h2>Jornada a Jornada</h2>
-<table id="weeklyTable">
-<thead>
-<tr>
-<th>Jornada</th>
-<th>Jugador</th>
-<th>Puntos</th>
-<th>Ranking</th>
-<th>Dinero</th>
-</tr>
-</thead>
-<tbody></tbody>
-</table>
+<section class="bg2">
+    <h2>Jornada a Jornada</h2>
+    <table id="tabla-jornada">
+        <thead>
+            <tr>
+                <th>Jornada</th>
+                <th>Jugador</th>
+                <th>Puntos</th>
+                <th>Ranking</th>
+                <th>Dinero</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Se llenará por JavaScript -->
+        </tbody>
+    </table>
 </section>
 
-<section>
-<h2>Nuestros Patrocinadores</h2>
-<div class="patrocinadores">
-<div class="patrocinador-card">
-<img src="img/dessertlinks.png" alt="Dessert Links">
-<p>Dessert<br>Links</p>
-</div>
-<div class="patrocinador-card">
-<img src="img/threeworld.png" alt="Three World">
-<p>Three<br>World</p>
-</div>
-<div class="patrocinador-card">
-<img src="img/vpvparaiso.png" alt="VPV Paraíso">
-<p>VPV<br>Paraíso</p>
-</div>
-</div>
+<section class="bg1">
+    <h2>Nuestros Patrocinadores</h2>
+    <div class="patrocinadores">
+        <div class="patrocinador">
+            <img src="ruta-a-dessert-links.png" alt="Dessert Links">
+            <p>Dessert<br>Links</p>
+        </div>
+        <div class="patrocinador">
+            <img src="ruta-a-three-world.png" alt="Three World">
+            <p>Three<br>World</p>
+        </div>
+        <div class="patrocinador">
+            <img src="ruta-a-vpv-paraiso.png" alt="VPV Paraíso">
+            <p>VPV<br>Paraíso</p>
+        </div>
+    </div>
 </section>
 
 <footer>
-<p>© 2025 Resultados de la Desert Links League 25/26. Es lo que hay majo</p>
+    Página web oficial de Fantasy League 2025
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
-// CSVs de Google Sheets
-const globalCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?output=csv&gid=1331028797";
-const weeklyCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?output=csv&gid=0";
-
-function loadCSV(url, callback) {
-    $.ajax({ type: "GET", url: url, dataType: "text", success: callback });
+async function fetchCSV(url) {
+    const response = await fetch(url);
+    const text = await response.text();
+    const rows = text.trim().split('\n');
+    const headers = rows[0].split(',');
+    return rows.slice(1).map(row => {
+        const values = row.split(',');
+        const obj = {};
+        headers.forEach((h, i) => obj[h.trim()] = values[i].trim());
+        return obj;
+    });
 }
 
-function populateGlobalTable(data) {
-    const lines = data.split("\n").filter(line => line.trim() !== "");
-    const tbody = $("#globalTable tbody");
-    tbody.empty();
-    for(let i=1;i<lines.length;i++){
-        const cols = lines[i].split(",");
-        if(cols.length < 3) continue;
-        const jugador = cols[0].trim();
-        const puntos = cols[1].trim();
-        const dinero = cols[2].trim();
-        let clase="", textoClase="";
-        if(i==1){ clase="medal-1"; textoClase="🥇"; }
-        else if(i==2){ clase="medal-2"; textoClase="🥈"; }
-        else if(i==3){ clase="medal-3"; textoClase="🥉"; }
-        else if(i>=lines.length-2){ clase="last-2"; textoClase=""; }
-        tbody.append(`<tr class="${clase}"><td>${jugador} ${textoClase}</td><td>${puntos}</td><td>${dinero}</td></tr>`);
-    }
+function construirTablaGlobal(data) {
+    const tabla = document.getElementById("tabla-global").querySelector("tbody");
+    tabla.innerHTML = "";
+
+    data.forEach((row, index) => {
+        let dinero = row["Total Dinero"].replace(",", ".");
+        dinero = parseFloat(dinero).toFixed(2) + " €";
+
+        const tr = document.createElement("tr");
+
+        if(index === 0) tr.className = "top1";
+        else if(index === 1) tr.className = "top2";
+        else if(index === 2) tr.className = "top3";
+        else if(index === data.length - 2) tr.className = "bottom2";
+        else if(index === data.length - 1) tr.className = "bottom1";
+
+        let medal = "";
+        if (index === 0) medal = " 🥇";
+        else if (index === 1) medal = " 🥈";
+        else if (index === 2) medal = " 🥉";
+
+        tr.innerHTML = `
+            <td>${row["Jugador"]}${medal}</td>
+            <td>${row["Total Puntos"]}</td>
+            <td>${dinero}</td>
+        `;
+        tabla.appendChild(tr);
+    });
 }
 
-function populateWeeklyTable(data) {
-    const lines = data.split("\n").filter(line => line.trim() !== "");
-    const tbody = $("#weeklyTable tbody");
-    tbody.empty();
-    for(let i=1;i<lines.length;i++){
-        const cols = lines[i].split(",");
-        if(cols.length < 5) continue;
-        const jornada = cols[0].trim();
-        const jugador = cols[1].trim();
-        const puntos = cols[2].trim();
-        const ranking = cols[3].trim();
-        const dinero = cols[4].trim();
-        tbody.append(`<tr><td>${jornada}</td><td>${jugador}</td><td>${puntos}</td><td>${ranking}</td><td>${dinero}</td></tr>`);
-    }
+function construirTablaJornada(data) {
+    const tabla = document.getElementById("tabla-jornada").querySelector("tbody");
+    tabla.innerHTML = "";
+
+    data.forEach(row => {
+        let dinero = row["Dinero"].replace(",", ".");
+        dinero = parseFloat(dinero).toFixed(2) + " €";
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td>${row["Jornada"]}</td>
+            <td>${row["Jugador"]}</td>
+            <td>${row["Puntos"]}</td>
+            <td>${row["Ranking"]}</td>
+            <td>${dinero}</td>
+        `;
+        tabla.appendChild(tr);
+    });
 }
 
-$(document).ready(function(){
-    loadCSV(globalCSV, populateGlobalTable);
-    loadCSV(weeklyCSV, populateWeeklyTable);
-});
+async function init() {
+    const globalData = await fetchCSV("https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=1331028797&single=true&output=csv");
+    construirTablaGlobal(globalData);
+
+    const jornadaData = await fetchCSV("https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=0&single=true&output=csv");
+    construirTablaJornada(jornadaData);
+}
+
+init();
 </script>
 
 </body>
