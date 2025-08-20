@@ -185,8 +185,8 @@ Bienvenidos a la página oficial de la Desert Links League 25/26. Aquí podrás 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 // CSVs (pon aquí tus enlaces de Google Sheets exportados como CSV)
-const globalCSV = "TU_LINK_GLOBAL_CSV";
-const weeklyCSV = "TU_LINK_JORNADA_CSV";
+const globalCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pubhtml?gid=1331028797&single=true";
+const weeklyCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pubhtml?gid=0&single=true";
 
 function loadCSV(url, callback) {
     $.ajax({ type: "GET", url: url, dataType: "text", success: callback });
@@ -235,3 +235,4 @@ $(document).ready(function(){
 
 </body>
 </html>
+
