@@ -1,219 +1,195 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="utf-8">
-    <title>Desert Links League 25/26</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desert Links League 25/26, página web oficial</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
         }
-
-        .section {
+        header {
+            background: #343a40;
+            color: #fff;
+            padding: 60px 15px 30px 15px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        header p {
+            font-size: 1.2rem;
+        }
+        section {
             padding: 60px 15px;
         }
-
-        .bg-light-gray {
-            background: #f0f0f0;
+        section:nth-child(even) {
+            background: #e9ecef;
         }
-
-        .bg-dark-gray {
-            background: #e0e0e0;
-        }
-
-        h1, h2 {
+        h2 {
             margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
         }
-
-        table {
-            width: 100%;
-            text-align: left;
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
         }
-
-        th, td {
-            padding: 12px;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-
-        th {
-            background-color: #555;
-            color: white;
+        .card-header {
+            font-weight: bold;
+            text-align: center;
         }
-
-        tr:nth-child(even) {
-            background-color: #f7f7f7;
+        .table tbody tr:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
         }
-
-        .medalla-oro {
-            background-color: #FFD70033;
+        .top1 { background-color: #fff8dc !important; font-weight:bold; }
+        .top2 { background-color: #dcdcdc !important; font-weight:bold; }
+        .top3 { background-color: #f5deb3 !important; font-weight:bold; }
+        .sponsor-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
         }
-
-        .medalla-plata {
-            background-color: #C0C0C033;
-        }
-
-        .medalla-bronce {
-            background-color: #CD7F3233;
-        }
-
         .sponsor {
             text-align: center;
-            margin: 0 15px;
+            margin: 20px;
+            transition: transform 0.3s;
         }
-
         .sponsor img {
             max-width: 150px;
-            margin-bottom: 10px;
+            border-radius: 10px;
         }
-
+        .sponsor:hover {
+            transform: scale(1.05);
+        }
         .footer {
             text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            background-color: #333;
-            color: white;
+            padding: 30px;
+            background: #343a40;
+            color: #fff;
+            margin-top: 40px;
         }
-
-        .page-subtitle {
-            font-size: 14px;
-            color: #999;
-        }
+        .small-text { font-size: 1rem; }
+        .intro-text { max-width: 800px; margin: auto; text-align: center; }
     </style>
 </head>
-
 <body>
 
-    <div class="section bg-dark-gray text-center">
-        <h1>Desert Links League 25/26</h1>
-        <p class="page-subtitle">Página web oficial</p>
-        <p>Bienvenido a la página de resultados de la Desert Links League 25/26, donde encontrarás las clasificaciones y estadísticas semanales de los presidentes de nuestra liga de fútbol de fantasía.</p>
-    </div>
+<header>
+    <h1>Desert Links League 25/26</h1>
+    <p class="small-text">Página web oficial</p>
+</header>
 
-    <div class="section bg-light-gray">
-        <h2 class="text-center">Resultados Totales</h2>
-        <div class="table-responsive">
-            <table class="table table-bordered" id="tablaResultados">
-                <thead>
-                    <tr>
-                        <th>Presidente</th>
-                        <th>Puntos</th>
-                        <th>Dinero (€)</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+<section>
+    <h2>Bienvenido a la Desert Links League</h2>
+    <p class="intro-text">Aquí encontrarás los resultados semanales de nuestra liga Fantasy basada en la liga española. Consulta puntos, dinero acumulado y la clasificación completa de todos los presidentes.</p>
+</section>
+
+<section>
+    <h2>Resultados Totales</h2>
+    <div id="resultados" class="container">
+        <!-- Cards con resultados cargados desde Google Sheets -->
+    </div>
+</section>
+
+<section>
+    <h2>Clasificación por Jornada</h2>
+    <div id="clasificacion" class="container">
+        <!-- Cards con clasificación cargados desde Google Sheets -->
+    </div>
+</section>
+
+<section>
+    <h2>Nuestros Patrocinadores</h2>
+    <div class="sponsor-container">
+        <div class="sponsor">
+            <img src="ruta_a_imagen_1.jpg" alt="Dessert Links">
+            <p>Dessert<br>Links</p>
+        </div>
+        <div class="sponsor">
+            <img src="ruta_a_imagen_2.jpg" alt="Three World">
+            <p>Three<br>World</p>
+        </div>
+        <div class="sponsor">
+            <img src="ruta_a_imagen_3.jpg" alt="VPV Paraíso">
+            <p>VPV<br>Paraíso</p>
         </div>
     </div>
+</section>
 
-    <div class="section bg-dark-gray">
-        <h2 class="text-center">Clasificación por Jornada</h2>
-        <div class="table-responsive">
-            <table class="table table-bordered" id="tablaClasificacion">
-                <thead>
-                    <tr>
-                        <th>Jornada</th>
-                        <th>Presidente</th>
-                        <th>Puntos</th>
-                        <th>Dinero (€)</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-    </div>
+<footer class="footer">
+    © 2025 Resultados de la Dessert Links League 25/26. Es lo que hay majo
+</footer>
 
-    <div class="section bg-light-gray text-center">
-        <h2>Nuestros Patrocinadores</h2>
-        <div class="d-flex justify-content-center flex-wrap">
-            <div class="sponsor">
-                <img src="ruta_a_tu_imagen1.png" alt="Dessert Links">
-                <div>Dessert<br>Links</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    const resultadosCSV = 'URL_DEL_CSV_RESULTADOS';
+    const clasificacionCSV = 'URL_DEL_CSV_CLASIFICACION';
+
+    function crearCardPresidente(pos, nombre, puntos, dinero) {
+        let claseTop = '';
+        let medalla = '';
+        if(pos === 1){ claseTop='top1'; medalla='🥇'; }
+        else if(pos === 2){ claseTop='top2'; medalla='🥈'; }
+        else if(pos === 3){ claseTop='top3'; medalla='🥉'; }
+        return `<div class="card ${claseTop}">
+            <div class="card-header">${pos} - ${nombre} ${medalla}</div>
+            <div class="card-body text-center">
+                <p>Puntos: <strong>${puntos}</strong></p>
+                <p>Dinero (€): <strong>${dinero}</strong></p>
             </div>
-            <div class="sponsor">
-                <img src="ruta_a_tu_imagen2.png" alt="Three World">
-                <div>Three<br>World</div>
-            </div>
-            <div class="sponsor">
-                <img src="ruta_a_tu_imagen3.png" alt="VPV Paraíso">
-                <div>VPV<br>Paraíso</div>
-            </div>
-        </div>
-    </div>
+        </div>`;
+    }
 
-    <div class="footer">
-        © 2025 Resultados de la Dessert Links League 25/26. Es lo que hay majo
-    </div>
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-
-    <script>
-        const urlResultados = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=0&single=true&output=csv';
-        const urlClasificacion = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=1331028797&single=true&output=csv';
-
-        function cargarResultados() {
-            Papa.parse(urlClasificacion, {
-                download: true,
-                header: true,
-                delimiter: ",",
-                complete: function(results) {
-                    const tbody = $('#tablaResultados tbody');
-                    tbody.empty();
-                    results.data.forEach((row, index) => {
-                        if (row['Jugador']) {
-                            let clase = '';
-                            let medalla = '';
-                            if (index === 0) { clase = 'medalla-oro'; medalla = ' 🥇'; }
-                            else if (index === 1) { clase = 'medalla-plata'; medalla = ' 🥈'; }
-                            else if (index === 2) { clase = 'medalla-bronce'; medalla = ' 🥉'; }
-
-                            tbody.append(`
-                                <tr class="${clase}">
-                                    <td>${index + 1} - ${row['Jugador']}${medalla}</td>
-                                    <td>${row['Total Puntos']}</td>
-                                    <td>${row['Total Dinero']}</td>
-                                </tr>
-                            `);
-                        }
-                    });
-                }
+    function cargarResultados() {
+        $.get(resultadosCSV, function(data) {
+            const filas = data.split('\n').slice(1);
+            let html = '';
+            filas.forEach((fila, index) => {
+                if(fila.trim() === '') return;
+                const celdas = fila.split(',');
+                const nombre = celdas[1];
+                const puntos = celdas[2];
+                const dinero = celdas[4];
+                html += crearCardPresidente(index+1, nombre, puntos, dinero);
             });
-        }
-
-        function cargarClasificacion() {
-            Papa.parse(urlResultados, {
-                download: true,
-                header: true,
-                delimiter: ",",
-                complete: function(results) {
-                    const tbody = $('#tablaClasificacion tbody');
-                    tbody.empty();
-                    results.data.forEach((row) => {
-                        if (row['Jugador']) {
-                            tbody.append(`
-                                <tr>
-                                    <td>${row['Jornada']}</td>
-                                    <td>${row['Jugador']}</td>
-                                    <td>${row['Puntos']}</td>
-                                    <td>${row['Dinero']}</td>
-                                </tr>
-                            `);
-                        }
-                    });
-                }
-            });
-        }
-
-        $(document).ready(function() {
-            cargarResultados();
-            cargarClasificacion();
+            $('#resultados').html(html);
         });
-    </script>
+    }
+
+    function cargarClasificacion() {
+        $.get(clasificacionCSV, function(data) {
+            const filas = data.split('\n').slice(1);
+            let html = '';
+            filas.forEach((fila, index) => {
+                if(fila.trim() === '') return;
+                const celdas = fila.split(',');
+                const nombre = celdas[0];
+                const puntos = celdas[1];
+                const dinero = celdas[2];
+                html += crearCardPresidente(index+1, nombre, puntos, dinero);
+            });
+            $('#clasificacion').html(html);
+        });
+    }
+
+    $(document).ready(function() {
+        cargarResultados();
+        cargarClasificacion();
+    });
+</script>
 
 </body>
 </html>
