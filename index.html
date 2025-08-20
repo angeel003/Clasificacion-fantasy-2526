@@ -11,13 +11,21 @@
     <link href="lib/owlcarousel/assets/owl.theme.default.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <style>
-        body { background-color: #f8f9fa; }
+        body { margin:0; font-family: Arial, sans-serif; }
+
+        .section { padding: 60px 0; }
+        .section:nth-child(even) { background-color: #f8f9fa; }
+        .section:nth-child(odd) { background-color: #e9ecef; }
+
         .header-title { color: #212529; font-weight: bold; font-size: 2.5rem; }
         .header-subtitle { font-size: 1rem; color: #6c757d; margin-bottom: 2rem; }
-        table th, table td { text-align: center; }
-        .gold { background-color: #FFD700; }
-        .silver { background-color: #C0C0C0; }
-        .bronze { background-color: #CD7F32; }
+
+        table th, table td { text-align: center; vertical-align: middle; }
+
+        .gold { background-color: #fff3b0 !important; }
+        .silver { background-color: #e2e3e5 !important; }
+        .bronze { background-color: #f3d6b5 !important; }
+
         .sponsors .sponsor-item { margin: 0 40px; }
     </style>
 </head>
@@ -25,14 +33,14 @@
 <body>
 
     <!-- Header -->
-    <div class="container text-center my-5">
+    <div class="section text-center">
         <div class="header-title">Desert Links League 25/26</div>
         <div class="header-subtitle">Página web oficial</div>
-        <p>En esta web encontrarás los resultados semanales de los presidentes, sus puntos, su dinero acumulado y la clasificación por jornadas de la mejor y más seria liga de Fantasy Fútbol de la Liga Española.</p>
+        <p>En esta web encontrarás los resultados semanales de los presidentes, sus puntos, su dinero acumulado y la clasificación por jornadas de nuestra liga de Fantasy Fútbol española.</p>
     </div>
 
     <!-- Resultados -->
-    <div class="container my-5">
+    <div class="section container">
         <h3 class="mb-4">Resultados Totales</h3>
         <table class="table table-bordered table-striped">
             <thead class="thead-dark">
@@ -49,7 +57,7 @@
     </div>
 
     <!-- Clasificación -->
-    <div class="container my-5">
+    <div class="section container">
         <h3 class="mb-4">Clasificación por Jornada</h3>
         <table class="table table-bordered table-striped">
             <thead class="thead-dark">
@@ -67,7 +75,7 @@
     </div>
 
     <!-- Patrocinadores -->
-    <div class="container my-5">
+    <div class="section container">
         <h3 class="text-center mb-4">Nuestros Patrocinadores</h3>
         <div class="sponsors d-flex justify-content-center align-items-center flex-wrap my-4">
             <div class="text-center sponsor-item">
@@ -101,11 +109,9 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
     <script>
-        // CSV URLs
         const csvResultados = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=0&single=true&output=csv";
         const csvClasificacion = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=1331028797&single=true&output=csv";
 
-        // Función para cargar CSV
         async function cargarCSV(url) {
             const res = await fetch(url);
             const text = await res.text();
@@ -114,18 +120,18 @@
 
         function parseCSV(text) {
             const lines = text.trim().split("\n");
-            const headers = lines[0].split(",").map(h => h.trim());
+            let headers = lines[0].split(",").map(h => h.trim());
             const data = lines.slice(1).map(line => {
                 const values = line.split(",").map(v => v.trim());
                 let obj = {};
-                headers.forEach((h, i) => obj[h] = values[i]);
+                headers.forEach((h, i) => obj[h] = values[i] || 0);
                 return obj;
             });
             return data;
         }
 
         function formatMoney(valor) {
-            return parseFloat(valor).toFixed(2);
+            return parseFloat(valor || 0).toFixed(2);
         }
 
         function mostrarResultados(data) {
@@ -133,10 +139,12 @@
             tbody.innerHTML = "";
             data.forEach((row, i) => {
                 let medal = "";
-                if (i === 0) medal = " 🥇";
-                else if (i === 1) medal = " 🥈";
-                else if (i === 2) medal = " 🥉";
+                let clase = "";
+                if (i === 0) { medal = " 🥇"; clase="gold"; }
+                else if (i === 1) { medal = " 🥈"; clase="silver"; }
+                else if (i === 2) { medal = " 🥉"; clase="bronze"; }
                 const tr = document.createElement("tr");
+                tr.className = clase;
                 tr.innerHTML = `
                     <td>${i+1} - ${row["Jugador"]}${medal}</td>
                     <td>${row["Total Puntos"]}</td>
@@ -171,6 +179,6 @@
 
         init();
     </script>
+
 </body>
 </html>
-
