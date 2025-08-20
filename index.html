@@ -2,171 +2,160 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desert Links League 25/26, página web oficial</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Desert Links League 25/26, pagina web oficial</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f8f9fa;
         }
-
-        h1, h2 {
-            color: #343a40;
-        }
-
-        .welcome-header {
+        .header {
             background-color: #343a40;
             color: #fff;
-            padding: 50px 20px;
+            padding: 40px 0;
             text-align: center;
-            border-bottom: 5px solid #ffc107;
         }
-
-        .welcome-header h1 {
+        .header h1 {
             font-size: 2.5rem;
-            margin-bottom: 20px;
         }
-
-        .welcome-header p {
-            font-size: 1.2rem;
-            font-style: italic;
+        .header .small-text {
+            font-size: 0.5em;
+            color: #dcdcdc;
         }
-
-        .table thead th {
-            background-color: #343a40;
-            color: white;
+        .table th, .table td {
+            vertical-align: middle;
         }
-
-        .table-striped tbody tr:nth-of-type(odd) {
-            background-color: #e9ecef;
+        .gold {
+            background-color: #ffd70033 !important;
         }
-
-        .table-hover tbody tr:hover {
-            background-color: #ffe066 !important;
+        .silver {
+            background-color: #c0c0c033 !important;
         }
-
-        .table-results tbody tr.gold {
-            background-color: #FFD700 !important;
-            font-weight: bold;
+        .bronze {
+            background-color: #cd7f3233 !important;
         }
-
-        .table-results tbody tr.silver {
-            background-color: #C0C0C0 !important;
-            font-weight: bold;
+        .sponsors img {
+            height: 60px;
+            margin: 0 15px;
         }
-
-        .table-results tbody tr.bronze {
-            background-color: #CD7F32 !important;
-            font-weight: bold;
-        }
-
-        .trophy {
-            margin-right: 8px;
-        }
-
         .footer {
             background-color: #343a40;
-            color: #ced4da;
-            padding: 20px 0;
+            color: #dcdcdc;
+            padding: 40px 0;
             text-align: center;
-            margin-top: 50px;
-        }
-
-        .container h2 {
-            margin-top: 40px;
-            margin-bottom: 20px;
         }
     </style>
 </head>
 
 <body>
-    <div class="welcome-header">
-        <h1>Bienvenidos a la página oficial de la Desert Links League 25/26</h1>
-        <p>Un espacio dedicado a los apasionados del golf y la competición más distinguida de la temporada. Aquí podrá seguir los resultados y clasificaciones con precisión y estilo.</p>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Bienvenidos a la Desert Links League 25/26 <span class="small-text">página web oficial</span></h1>
+        <p>Donde la pasión por el fútbol virtual se encuentra con la excelencia estratégica.</p>
     </div>
 
-    <div class="container">
-        <h2>Tabla de Resultados</h2>
-        <div class="table-responsive">
-            <table class="table table-striped table-hover table-bordered table-results">
-                <thead>
-                    <tr>
-                        <th>Presidente</th>
-                        <th>Puntos</th>
-                        <th>Dinero</th>
-                    </tr>
-                </thead>
-                <tbody id="resultados"></tbody>
-            </table>
-        </div>
-
-        <h2>Clasificación</h2>
-        <div class="table-responsive">
-            <table class="table table-striped table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th>Jornada</th>
-                        <th>Presidente</th>
-                        <th>Puntos</th>
-                        <th>Dinero</th>
-                    </tr>
-                </thead>
-                <tbody id="clasificacion"></tbody>
-            </table>
-        </div>
+    <!-- Resultados -->
+    <div class="container my-5">
+        <h2 class="mb-4 text-center">Resultados</h2>
+        <table class="table table-bordered table-striped text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Presidente</th>
+                    <th>Puntos</th>
+                    <th>Dinero (€)</th>
+                </tr>
+            </thead>
+            <tbody id="resultados">
+                <!-- Datos se cargarán desde CSV -->
+            </tbody>
+        </table>
     </div>
 
+    <!-- Clasificación -->
+    <div class="container my-5">
+        <h2 class="mb-4 text-center">Clasificación por Jornadas</h2>
+        <table class="table table-bordered table-striped text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Jornada</th>
+                    <th>Presidente</th>
+                    <th>Puntos</th>
+                    <th>Dinero (€)</th>
+                </tr>
+            </thead>
+            <tbody id="clasificacion">
+                <!-- Datos se cargarán desde CSV -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Patrocinadores -->
+    <div class="sponsors d-flex justify-content-center align-items-center flex-wrap my-5">
+        <img src="patrocinador1.png" alt="Patrocinador 1" class="mx-3 my-2">
+        <img src="patrocinador2.png" alt="Patrocinador 2" class="mx-3 my-2">
+        <img src="patrocinador3.png" alt="Patrocinador 3" class="mx-3 my-2">
+    </div>
+
+    <!-- Footer -->
     <div class="footer">
-        © 2025 Resultados de la Desert Links League 25/26. Es lo que hay majo
+        <p>© 2025 Resultados de la Dessert Links League 25/26. Es lo que hay majo</p>
     </div>
 
+    <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
     <script>
-        const resultadosCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=1331028797&single=true&output=csv";
-        fetch(resultadosCSV)
-            .then(response => response.text())
-            .then(data => {
-                const rows = data.split('\n').slice(1);
-                const tbody = document.getElementById('resultados');
+        // CSV URLs
+        const csvResultados = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=1331028797&single=true&output=csv';
+        const csvClasificacion = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=0&single=true&output=csv';
 
-                rows.forEach((row, index) => {
-                    if (row.trim() === "") return;
-                    const cols = row.split(',');
-                    const tr = document.createElement('tr');
-
-                    let trophy = '';
-                    if (index === 0) { tr.classList.add('gold'); trophy = '<i class="fas fa-trophy trophy" style="color:#FFD700"></i>'; }
-                    else if (index === 1) { tr.classList.add('silver'); trophy = '<i class="fas fa-trophy trophy" style="color:#C0C0C0"></i>'; }
-                    else if (index === 2) { tr.classList.add('bronze'); trophy = '<i class="fas fa-trophy trophy" style="color:#CD7F32"></i>'; }
-
-                    tr.innerHTML = `<td>${trophy}${cols[0]}</td><td>${cols[1]}</td><td>${cols[2]}</td>`;
-                    tbody.appendChild(tr);
+        // Cargar resultados
+        Papa.parse(csvResultados, {
+            download: true,
+            header: true,
+            complete: function(results) {
+                let html = '';
+                results.data.forEach((row, index) => {
+                    let medalla = '';
+                    if(index === 0) medalla = ' 🥇';
+                    else if(index === 1) medalla = ' 🥈';
+                    else if(index === 2) medalla = ' 🥉';
+                    html += `<tr class="${index===0?'gold':index===1?'silver':index===2?'bronze':''}">
+                                <td>${index+1} - ${row.Presidente}${medalla}</td>
+                                <td>${parseFloat(row.Puntos).toFixed(2)}</td>
+                                <td>${parseFloat(row.Dinero).toFixed(2)} €</td>
+                             </tr>`;
                 });
-            })
-            .catch(error => console.error('Error cargando resultados CSV:', error));
+                document.getElementById('resultados').innerHTML = html;
+            }
+        });
 
-        const clasificacionCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=0&single=true&output=csv";
-        fetch(clasificacionCSV)
-            .then(response => response.text())
-            .then(data => {
-                const rows = data.split('\n').slice(1);
-                const tbody = document.getElementById('clasificacion');
-
-                rows.forEach(row => {
-                    if (row.trim() === "") return;
-                    const cols = row.split(',');
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `<td>${cols[0]}</td><td>${cols[1]}</td><td>${cols[2]}</td><td>${cols[3]}</td>`;
-                    tbody.appendChild(tr);
+        // Cargar clasificación
+        Papa.parse(csvClasificacion, {
+            download: true,
+            header: true,
+            complete: function(results) {
+                let html = '';
+                results.data.forEach(row => {
+                    if(row.Jornada) { // Evitar filas vacías
+                        html += `<tr>
+                                    <td>${row.Jornada}</td>
+                                    <td>${row.Presidente}</td>
+                                    <td>${parseFloat(row.Puntos).toFixed(2)}</td>
+                                    <td>${parseFloat(row.Dinero).toFixed(2)} €</td>
+                                 </tr>`;
+                    }
                 });
-            })
-            .catch(error => console.error('Error cargando clasificación CSV:', error));
+                document.getElementById('clasificacion').innerHTML = html;
+            }
+        });
     </script>
 </body>
 </html>
