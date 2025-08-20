@@ -3,108 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desert Links League 25/26, página web oficial</title>
+    <title>Desert Links League 25/26</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
+            color: #333;
         }
         header {
             background: linear-gradient(135deg, #6c757d, #343a40);
-            color: white;
+            color: #fff;
+            padding: 40px 20px;
             text-align: center;
-            padding: 50px 20px;
         }
         header h1 {
-            font-size: 3em;
+            font-size: 3rem;
+            font-weight: bold;
             margin-bottom: 10px;
         }
-        header p {
-            font-size: 1.2em;
-            margin: 0;
+        header small {
+            display: block;
+            font-size: 1rem;
+            color: #ddd;
         }
         section {
-            padding: 60px 20px;
+            padding: 40px 20px;
         }
-        .section-bg1 { background-color: #e9ecef; }
-        .section-bg2 { background-color: #dee2e6; }
-        .table-container {
-            overflow-x: auto;
+        section:nth-child(even) {
+            background-color: #e9ecef;
+        }
+        section:nth-child(odd) {
+            background-color: #f8f9fa;
+        }
+        h2 {
+            margin-bottom: 30px;
+            text-align: center;
         }
         table {
             width: 90%;
-            margin: 0 auto 50px auto;
+            margin: 0 auto 40px auto;
             border-collapse: collapse;
-            text-align: left;
-            background: #ffffff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease;
-        }
-        table:hover {
-            transform: scale(1.01);
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
         }
         th, td {
-            padding: 15px;
-            border-bottom: 1px solid #dee2e6;
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            transition: all 0.3s ease;
         }
         th {
-            background-color: #6c757d;
-            color: white;
+            background-color: #343a40;
+            color: #fff;
         }
-        tr:nth-child(1) td { font-weight: bold; background-color: #fff8dc; } /* Oro suave */
-        tr:nth-child(2) td { font-weight: bold; background-color: #e0e0e0; }   /* Plata suave */
-        tr:nth-child(3) td { font-weight: bold; background-color: #f5deb3; }   /* Bronce suave */
-        tr:hover { background-color: #f1f1f1; }
-        .sponsors {
+        tr:hover {
+            background-color: #d1d1d1;
+        }
+        .top1 { font-weight: bold; background-color: #ffe699; }
+        .top2 { font-weight: bold; background-color: #c0c0c0; }
+        .top3 { font-weight: bold; background-color: #cd7f32; }
+        .sponsor-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
             flex-wrap: wrap;
-            gap: 50px;
             margin-top: 40px;
         }
         .sponsor {
             text-align: center;
-            max-width: 200px;
+            margin: 20px;
             transition: transform 0.3s ease;
         }
         .sponsor img {
-            max-width: 100%;
-            border-radius: 10px;
-            margin-bottom: 10px;
+            max-width: 150px;
+            display: block;
+            margin: 0 auto 10px auto;
         }
         .sponsor:hover {
-            transform: translateY(-10px);
+            transform: scale(1.05);
         }
         footer {
             text-align: center;
             padding: 20px;
             background-color: #343a40;
-            color: white;
-        }
-        .official {
-            font-size: 1em;
-            margin-top: 5px;
-            color: #f8f9fa;
+            color: #fff;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Desert Links League 25/26</h1>
+        <small>Página web oficial</small>
+        <p>Bienvenido a la página de resultados y clasificaciones de la Desert Links League 25/26. Aquí encontrarás los resultados de cada jornada, la clasificación global de los presidentes y toda la información actualizada de nuestra liga.</p>
+    </header>
 
-<header>
-    <h1>Desert Links League 25/26</h1>
-    <p class="official">Página web oficial</p>
-    <p>Bienvenido a la web de resultados de la Desert Links League 25/26, donde podrás seguir la clasificación de tus equipos y jugadores favoritos semana a semana.</p>
-</header>
-
-<section class="section-bg1">
-    <h2 class="text-center mb-4">Resultados Totales</h2>
-    <div class="table-container">
+    <section id="resultados">
+        <h2>Resultados Totales</h2>
         <table id="tablaResultados">
             <thead>
                 <tr>
@@ -113,15 +108,12 @@
                     <th>Dinero (€)</th>
                 </tr>
             </thead>
-            <tbody>
-            </tbody>
+            <tbody></tbody>
         </table>
-    </div>
-</section>
+    </section>
 
-<section class="section-bg2">
-    <h2 class="text-center mb-4">Clasificación por Jornada</h2>
-    <div class="table-container">
+    <section id="clasificacion">
+        <h2>Clasificación por Jornada</h2>
         <table id="tablaClasificacion">
             <thead>
                 <tr>
@@ -131,81 +123,89 @@
                     <th>Dinero (€)</th>
                 </tr>
             </thead>
-            <tbody>
-            </tbody>
+            <tbody></tbody>
         </table>
-    </div>
-</section>
+    </section>
 
-<section class="section-bg1">
-    <h2 class="text-center mb-4">Nuestros Patrocinadores</h2>
-    <div class="sponsors">
-        <div class="sponsor">
-            <img src="img/dessert_links.png" alt="Dessert Links">
-            <p>Dessert<br>Links</p>
+    <section id="patrocinadores">
+        <h2>Nuestros Patrocinadores</h2>
+        <div class="sponsor-container">
+            <div class="sponsor">
+                <img src="img/dessert-links.png" alt="Dessert Links">
+                <p>Dessert<br>Links</p>
+            </div>
+            <div class="sponsor">
+                <img src="img/three-world.png" alt="Three World">
+                <p>Three<br>World</p>
+            </div>
+            <div class="sponsor">
+                <img src="img/vpv-paraiso.png" alt="VPV Paraíso">
+                <p>VPV<br>Paraíso</p>
+            </div>
         </div>
-        <div class="sponsor">
-            <img src="img/three_world.png" alt="Three World">
-            <p>Three<br>World</p>
-        </div>
-        <div class="sponsor">
-            <img src="img/vpv_paraiso.png" alt="VPV Paraíso">
-            <p>VPV<br>Paraíso</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<footer>
-    © 2025 Resultados de la Desert Links League 25/26. Es lo que hay majo
-</footer>
+    <footer>
+        © 2025 Resultados de la Desert Links League 25/26. Es lo que hay majo.
+    </footer>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-    const resultadosCSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=0&single=true&output=csv';
-    const clasificacionCSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=1331028797&single=true&output=csv';
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const csvResultados = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=0&single=true&output=csv";
+        const csvClasificacion = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=1331028797&single=true&output=csv";
 
-    function parseCSV(csv, delimiter = ",") {
-        const lines = csv.trim().split("\n");
-        return lines.map(line => line.split(delimiter));
-    }
+        function parseCSV(text) {
+            const lines = text.trim().split('\n');
+            const headers = lines.shift().split(',');
+            return lines.map(line => {
+                const values = line.split(',');
+                let obj = {};
+                headers.forEach((header, idx) => obj[header.trim()] = values[idx].trim());
+                return obj;
+            });
+        }
 
-    function fetchAndPopulate() {
-        $.get(resultadosCSV, function(data) {
-            const rows = parseCSV(data);
-            const tbody = $('#tablaResultados tbody');
-            tbody.empty();
-            for(let i=1; i<rows.length; i++) {
-                const [jugador, totalPuntos, totalDinero] = rows[i];
-                let medalla = '';
-                if(i === 1) medalla = ' 🥇';
-                if(i === 2) medalla = ' 🥈';
-                if(i === 3) medalla = ' 🥉';
-                tbody.append(`<tr>
-                    <td>${i} - ${jugador}${medalla}</td>
-                    <td>${totalPuntos}</td>
-                    <td>${totalDinero}</td>
-                </tr>`);
-            }
+        function cargarResultados() {
+            $.get(csvClasificacion, function(data) {
+                const rows = parseCSV(data);
+                const tbody = $("#tablaResultados tbody");
+                tbody.empty();
+                rows.forEach((row, index) => {
+                    const clase = index === 0 ? 'top1' : index === 1 ? 'top2' : index === 2 ? 'top3' : '';
+                    const medalla = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '';
+                    tbody.append(`
+                        <tr class="${clase}">
+                            <td>${index+1} - ${row['Jugador']} ${medalla}</td>
+                            <td>${row['Total Puntos']}</td>
+                            <td>${parseFloat(row['Total Dinero']).toFixed(2)}</td>
+                        </tr>
+                    `);
+                });
+            });
+        }
+
+        function cargarClasificacion() {
+            $.get(csvResultados, function(data) {
+                const rows = parseCSV(data);
+                const tbody = $("#tablaClasificacion tbody");
+                tbody.empty();
+                rows.forEach((row) => {
+                    tbody.append(`
+                        <tr>
+                            <td>${row['Jornada']}</td>
+                            <td>${row['Jugador']}</td>
+                            <td>${row['Puntos']}</td>
+                            <td>${parseFloat(row['Dinero']).toFixed(2)}</td>
+                        </tr>
+                    `);
+                });
+            });
+        }
+
+        $(document).ready(function() {
+            cargarResultados();
+            cargarClasificacion();
         });
-
-        $.get(clasificacionCSV, function(data) {
-            const rows = parseCSV(data);
-            const tbody = $('#tablaClasificacion tbody');
-            tbody.empty();
-            for(let i=1; i<rows.length; i++) {
-                const [jornada, jugador, puntos, ranking, dinero] = rows[i];
-                tbody.append(`<tr>
-                    <td>${jornada}</td>
-                    <td>${jugador}</td>
-                    <td>${puntos}</td>
-                    <td>${dinero}</td>
-                </tr>`);
-            }
-        });
-    }
-
-    $(document).ready(fetchAndPopulate);
-</script>
-
+    </script>
 </body>
 </html>
