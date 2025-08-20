@@ -198,7 +198,7 @@ function populateGlobalTable(data) {
         if(cols.length < 3) continue;
         const jugador = cols[0].trim();
         const puntos = cols[1].trim();
-        const dinero = lines[2].trim()); // decimales y €
+        const dinero = lines[2].trim(); // decimales y €
         let clase="", textoClase="";
         if(i==1){ clase="medal-1"; textoClase="🥇"; }
         else if(i==2){ clase="medal-2"; textoClase="🥈"; }
@@ -219,7 +219,7 @@ function populateWeeklyTable(data) {
         const jugador = cols[1].trim();
         const puntos = cols[2].trim();
         const ranking = cols[3].trim();
-        const dinero = lines[4].trim()); // decimales y €
+        const dinero = lines[4].trim(); // decimales y €
         tbody.append(`<tr><td>${jornada}</td><td>${jugador}</td><td>${puntos}</td><td>${ranking}</td><td>${dinero}</td></tr>`);
     }
 }
@@ -232,6 +232,7 @@ $(document).ready(function(){
 
 </body>
 </html>
+
 
 
 
