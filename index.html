@@ -119,8 +119,7 @@ function construirTablaGlobal(data) {
     tabla.innerHTML = "";
 
     data.forEach((row, index) => {
-        let dinero = row["Total Dinero"].replace(",", ".").replace(/"/g, "");
-        dinero = parseFloat(dinero).toFixed(2) + " €";
+        let dinero = row["Total Dinero"].replace(/"/g, "");
 
         const tr = document.createElement("tr");
 
@@ -149,8 +148,7 @@ function construirTablaJornada(data) {
     tabla.innerHTML = "";
 
     data.forEach(row => {
-        let dinero = row["Dinero"].replace(",", ".").replace(/"/g, "");
-        dinero = parseFloat(dinero).toFixed(2) + " €";
+        let dinero = row["Dinero"].replace(/"/g, "");
 
         const tr = document.createElement("tr");
         tr.innerHTML = `
