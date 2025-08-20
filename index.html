@@ -50,7 +50,7 @@ table {
 th, td {
     padding: 14px 18px;
     border-bottom: 1px solid #ddd;
-    text-align: left;
+    text-align: center;
 }
 thead {
     background: #6c757d;
@@ -181,18 +181,12 @@ h2 {
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
-const globalCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pubhtml?gid=1331028797&single=true";
-const weeklyCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pubhtml?gid=0&single=true";
+// Enlaces CSV publicados con output=csv
+const globalCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=1331028797&single=true&output=csv";
+const weeklyCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=0&single=true&output=csv";
 
 function loadCSV(url, callback) {
     $.ajax({ type: "GET", url: url, dataType: "text", success: callback });
-}
-
-function formatEuro(valor) {
-    // Convierte el valor a número y lo formatea con 2 decimales y €
-    let num = parseFloat(valor.replace(/"/g, "").replace(",", "."));
-    if(isNaN(num)) num = 0;
-    return num.toFixed(2) + " €";
 }
 
 function populateGlobalTable(data) {
@@ -204,7 +198,7 @@ function populateGlobalTable(data) {
         if(cols.length < 3) continue;
         const jugador = cols[0].trim();
         const puntos = cols[1].trim();
-        const dinero = formatEuro(cols[2].trim());
+        const dinero = parseFloat(cols[2].replace(/"/g,"").replace(",",".")).toFixed(2) + " €"; // decimales y €
         let clase="", textoClase="";
         if(i==1){ clase="medal-1"; textoClase="🥇"; }
         else if(i==2){ clase="medal-2"; textoClase="🥈"; }
@@ -225,7 +219,7 @@ function populateWeeklyTable(data) {
         const jugador = cols[1].trim();
         const puntos = cols[2].trim();
         const ranking = cols[3].trim();
-        const dinero = formatEuro(cols[4].trim());
+        const dinero = parseFloat(cols[4].replace(/"/g,"").replace(",",".")).toFixed(2) + " €"; // decimales y €
         tbody.append(`<tr><td>${jornada}</td><td>${jugador}</td><td>${puntos}</td><td>${ranking}</td><td>${dinero}</td></tr>`);
     }
 }
@@ -238,4 +232,3 @@ $(document).ready(function(){
 
 </body>
 </html>
-
