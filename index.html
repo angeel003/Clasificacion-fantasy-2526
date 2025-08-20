@@ -1,66 +1,105 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mis Tablas desde Google Sheets</title>
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-<style>
-  body { font-family: Arial; background: #f0f4f8; padding: 20px; color: #333; }
-  h1 { text-align:center; }
-  .tabs { display:flex; justify-content:center; margin-bottom:20px; }
-  .tab-button { padding:10px 20px; margin:0 5px; cursor:pointer; border:none; border-radius:5px 5px 0 0; background:#ccc; }
-  .tab-button.active { background:#4CAF50; color:white; }
-  table { border-collapse: collapse; width: 100%; margin-top:10px; }
-  th, td { border:1px solid #999; padding:8px; text-align:center; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de la Liga</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Header -->
+    <div class="container-fluid bg-dark text-white py-3 mb-4">
+        <div class="text-center">
+            <h1>Resultados de la Liga</h1>
+        </div>
+    </div>
 
-<h1>Mis Tablas</h1>
-<div class="tabs">
-  <button class="tab-button active" onclick="showTable(1)">Tabla 1</button>
-  <button class="tab-button" onclick="showTable(2)">Tabla 2</button>
-</div>
+    <!-- Resultados -->
+    <div class="container py-5">
+        <h2 class="mb-4 text-center">Resultados</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Local</th>
+                        <th>Visitante</th>
+                        <th>Resultado</th>
+                    </tr>
+                </thead>
+                <tbody id="resultados"></tbody>
+            </table>
+        </div>
+    </div>
 
-<div id="tabla1"></div>
-<div id="tabla2" style="display:none"></div>
+    <!-- Clasificación -->
+    <div class="container py-5">
+        <h2 class="mb-4 text-center">Clasificación</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Pos</th>
+                        <th>Equipo</th>
+                        <th>Puntos</th>
+                        <th>GF</th>
+                        <th>GC</th>
+                    </tr>
+                </thead>
+                <tbody id="clasificacion"></tbody>
+            </table>
+        </div>
+    </div>
 
-<script>
-const url1 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=1331028797&single=true&output=csv';
-const url2 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=0&single=true&output=csv';
+    <!-- Footer -->
+    <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
+        <div class="row px-xl-5 pt-5">
+            <div class="col-lg-12 text-center mb-5">
+                <p class="mb-0 text-secondary">
+                    &copy; 2025 Resultados de la Liga. Diseñado por <a class="text-primary" href="#">Tu Nombre</a>
+                </p>
+            </div>
+        </div>
+    </div>
 
-function mostrarCSV(url, containerId){
-  Papa.parse(url, {
-    download:true,
-    header:false,
-    complete:function(results){
-      let data = results.data;
-      let html = '<table>';
-      data.forEach((row, i)=>{
-        html += '<tr>';
-        row.forEach(cell=>{
-          html += i===0 ? `<th>${cell}</th>` : `<td>${cell}</td>`;
-        });
-        html += '</tr>';
-      });
-      html += '</table>';
-      document.getElementById(containerId).innerHTML = html;
-    }
-  });
-}
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
-mostrarCSV(url1, 'tabla1');
-mostrarCSV(url2, 'tabla2');
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+    $(document).ready(function(){
+        // Enlaces a tus Google Sheets publicados como CSV
+        const resultadosCSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=1331028797&single=true&output=csv';
+        const clasificacionCSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=0&single=true&output=csv';
 
-function showTable(n){
-  document.getElementById('tabla1').style.display = n===1 ? 'block' : 'none';
-  document.getElementById('tabla2').style.display = n===2 ? 'block' : 'none';
-  document.querySelectorAll('.tab-button').forEach((btn, i)=>{
-    btn.classList.toggle('active', i === n-1);
-  });
-}
-</script>
+        function cargarCSV(url, tbodyId){
+            $.ajax({
+                url: url,
+                dataType: 'text',
+            }).done(function(data) {
+                let rows = data.split('\n');
+                let html = '';
+                rows.forEach(function(row, index){
+                    if(row.trim() !== ''){
+                        let cols = row.split(',');
+                        // Ignorar fila de encabezado en CSV
+                        if(index === 0) return;
+                        html += '<tr>';
+                        cols.forEach(function(col){ html += '<td>'+col+'</td>'; });
+                        html += '</tr>';
+                    }
+                });
+                $(tbodyId).html(html);
+            });
+        }
 
+        cargarCSV(resultadosCSV, '#resultados');
+        cargarCSV(clasificacionCSV, '#clasificacion');
+    });
+    </script>
 </body>
 </html>
