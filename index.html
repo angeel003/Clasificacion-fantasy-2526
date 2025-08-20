@@ -5,26 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Desert Links League 25/26</title>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 <style>
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background: #f0f2f5;
     margin: 0;
 }
 header {
     background: linear-gradient(135deg, #343a40, #495057);
     color: white;
-    padding: 60px 15px;
+    padding: 80px 15px 50px;
     text-align: center;
 }
 header h1 {
-    font-size: 3.2rem;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    font-weight: 700;
 }
 header p {
-    font-size: 1.1rem;
-    opacity: 0.8;
+    font-size: 1.3rem;
+    opacity: 0.85;
+    margin-bottom: 20px;
+}
+header .intro {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    opacity: 0.9;
 }
 section {
     padding: 60px 15px;
@@ -36,14 +47,14 @@ section {
 table {
     width: 80%;
     max-width: 900px;
-    margin: 0 auto;
+    margin: 0 auto 40px;
     border-collapse: collapse;
     background: white;
 }
 th, td {
     padding: 14px 18px;
     border-bottom: 1px solid #ddd;
-    text-align: left;
+    text-align: center;
 }
 thead {
     background: #6c757d;
@@ -110,6 +121,9 @@ h2 {
 <header>
 <h1>Desert Links League 25/26</h1>
 <p>Página web oficial</p>
+<div class="intro">
+Bienvenidos a la página oficial de la Desert Links League 25/26. Aquí podrás consultar los resultados de cada jornada, la clasificación general y mantenerte al día con nuestros patrocinadores. ¡Que comience la competición!
+</div>
 </header>
 
 <section>
@@ -170,6 +184,7 @@ h2 {
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
+// CSVs (pon aquí tus enlaces de Google Sheets exportados como CSV)
 const globalCSV = "TU_LINK_GLOBAL_CSV";
 const weeklyCSV = "TU_LINK_JORNADA_CSV";
 
@@ -192,7 +207,7 @@ function populateGlobalTable(data) {
         else if(i==2){ clase="medal-2"; textoClase="🥈"; }
         else if(i==3){ clase="medal-3"; textoClase="🥉"; }
         else if(i>=lines.length-2){ clase="last-2"; textoClase=""; }
-        tbody.append(`<tr class="${clase}"><td>${i} - ${jugador} ${textoClase}</td><td>${puntos}</td><td>${dinero}</td></tr>`);
+        tbody.append(`<tr class="${clase}"><td>${jugador} ${textoClase}</td><td>${puntos}</td><td>${dinero}</td></tr>`);
     }
 }
 
