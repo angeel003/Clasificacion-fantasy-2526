@@ -2,66 +2,39 @@
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <title>Desert Links League 25/26, pagina web oficial</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desert Links League 25/26, página web oficial</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .header {
-            background-color: #343a40;
-            color: #fff;
-            padding: 40px 0;
-            text-align: center;
-        }
-        .header h1 {
-            font-size: 2.5rem;
-        }
-        .header .small-text {
-            font-size: 0.5em;
-            color: #dcdcdc;
-        }
-        .table th, .table td {
-            vertical-align: middle;
-        }
-        .gold {
-            background-color: #ffd70033 !important;
-        }
-        .silver {
-            background-color: #c0c0c033 !important;
-        }
-        .bronze {
-            background-color: #cd7f3233 !important;
-        }
-        .sponsors img {
-            height: 60px;
-            margin: 0 15px;
-        }
-        .footer {
-            background-color: #343a40;
-            color: #dcdcdc;
-            padding: 40px 0;
-            text-align: center;
-        }
+        body { background-color: #f8f9fa; }
+        .header-title { color: #212529; font-weight: bold; font-size: 2.5rem; }
+        .header-subtitle { font-size: 1rem; color: #6c757d; margin-bottom: 2rem; }
+        table th, table td { text-align: center; }
+        .gold { background-color: #FFD700; }
+        .silver { background-color: #C0C0C0; }
+        .bronze { background-color: #CD7F32; }
+        .sponsors .sponsor-item { margin: 0 40px; }
     </style>
 </head>
 
 <body>
 
     <!-- Header -->
-    <div class="header">
-        <h1>Bienvenidos a la Desert Links League 25/26 <span class="small-text">página web oficial</span></h1>
-        <p>Donde la pasión por el fútbol virtual se encuentra con la excelencia estratégica.</p>
+    <div class="container text-center my-5">
+        <div class="header-title">Desert Links League 25/26</div>
+        <div class="header-subtitle">Página web oficial</div>
+        <p>En esta web encontrarás los resultados semanales de los presidentes, sus puntos, su dinero acumulado y la clasificación por jornadas de la liga de Fantasy Fútbol de la Liga Española.</p>
     </div>
 
     <!-- Resultados -->
     <div class="container my-5">
-        <h2 class="mb-4 text-center">Resultados</h2>
-        <table class="table table-bordered table-striped text-center">
+        <h3 class="mb-4">Resultados Totales</h3>
+        <table class="table table-bordered table-striped">
             <thead class="thead-dark">
                 <tr>
                     <th>Presidente</th>
@@ -69,16 +42,16 @@
                     <th>Dinero (€)</th>
                 </tr>
             </thead>
-            <tbody id="resultados">
-                <!-- Datos se cargarán desde CSV -->
+            <tbody id="resultados-tbody">
+                <!-- Se cargan con JS -->
             </tbody>
         </table>
     </div>
 
     <!-- Clasificación -->
     <div class="container my-5">
-        <h2 class="mb-4 text-center">Clasificación por Jornadas</h2>
-        <table class="table table-bordered table-striped text-center">
+        <h3 class="mb-4">Clasificación por Jornada</h3>
+        <table class="table table-bordered table-striped">
             <thead class="thead-dark">
                 <tr>
                     <th>Jornada</th>
@@ -87,75 +60,116 @@
                     <th>Dinero (€)</th>
                 </tr>
             </thead>
-            <tbody id="clasificacion">
-                <!-- Datos se cargarán desde CSV -->
+            <tbody id="clasificacion-tbody">
+                <!-- Se cargan con JS -->
             </tbody>
         </table>
     </div>
 
     <!-- Patrocinadores -->
-    <div class="sponsors d-flex justify-content-center align-items-center flex-wrap my-5">
-        <img src="patrocinador1.png" alt="Patrocinador 1" class="mx-3 my-2">
-        <img src="patrocinador2.png" alt="Patrocinador 2" class="mx-3 my-2">
-        <img src="patrocinador3.png" alt="Patrocinador 3" class="mx-3 my-2">
+    <div class="container my-5">
+        <h3 class="text-center mb-4">Nuestros Patrocinadores</h3>
+        <div class="sponsors d-flex justify-content-center align-items-center flex-wrap my-4">
+            <div class="text-center sponsor-item">
+                <img src="patrocinador1.png" alt="Dessert Links" class="mb-2" style="height:60px;">
+                <div>Dessert<br>Links</div>
+            </div>
+            <div class="text-center sponsor-item">
+                <img src="patrocinador2.png" alt="Three World" class="mb-2" style="height:60px;">
+                <div>Three<br>World</div>
+            </div>
+            <div class="text-center sponsor-item">
+                <img src="patrocinador3.png" alt="VPV Paraíso" class="mb-2" style="height:60px;">
+                <div>VPV<br>Paraíso</div>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->
-    <div class="footer">
-        <p>© 2025 Resultados de la Dessert Links League 25/26. Es lo que hay majo</p>
+    <div class="container-fluid bg-dark text-light py-4">
+        <div class="row">
+            <div class="col text-center">
+                © 2025 Resultados de la Dessert Links League 25/26. Es lo que hay majo.
+            </div>
+        </div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+
     <script>
         // CSV URLs
-        const csvResultados = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=1331028797&single=true&output=csv';
-        const csvClasificacion = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=0&single=true&output=csv';
+        const csvResultados = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=0&single=true&output=csv";
+        const csvClasificacion = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=1331028797&single=true&output=csv";
 
-        // Cargar resultados
-        Papa.parse(csvResultados, {
-            download: true,
-            header: true,
-            complete: function(results) {
-                let html = '';
-                results.data.forEach((row, index) => {
-                    let medalla = '';
-                    if(index === 0) medalla = ' 🥇';
-                    else if(index === 1) medalla = ' 🥈';
-                    else if(index === 2) medalla = ' 🥉';
-                    html += `<tr class="${index===0?'gold':index===1?'silver':index===2?'bronze':''}">
-                                <td>${index+1} - ${row.Presidente}${medalla}</td>
-                                <td>${parseFloat(row.Puntos).toFixed(2)}</td>
-                                <td>${parseFloat(row.Dinero).toFixed(2)} €</td>
-                             </tr>`;
-                });
-                document.getElementById('resultados').innerHTML = html;
-            }
-        });
+        // Función para cargar CSV
+        async function cargarCSV(url) {
+            const res = await fetch(url);
+            const text = await res.text();
+            return text;
+        }
 
-        // Cargar clasificación
-        Papa.parse(csvClasificacion, {
-            download: true,
-            header: true,
-            complete: function(results) {
-                let html = '';
-                results.data.forEach(row => {
-                    if(row.Jornada) { // Evitar filas vacías
-                        html += `<tr>
-                                    <td>${row.Jornada}</td>
-                                    <td>${row.Presidente}</td>
-                                    <td>${parseFloat(row.Puntos).toFixed(2)}</td>
-                                    <td>${parseFloat(row.Dinero).toFixed(2)} €</td>
-                                 </tr>`;
-                    }
-                });
-                document.getElementById('clasificacion').innerHTML = html;
-            }
-        });
+        function parseCSV(text) {
+            const lines = text.trim().split("\n");
+            const headers = lines[0].split(",").map(h => h.trim());
+            const data = lines.slice(1).map(line => {
+                const values = line.split(",").map(v => v.trim());
+                let obj = {};
+                headers.forEach((h, i) => obj[h] = values[i]);
+                return obj;
+            });
+            return data;
+        }
+
+        function formatMoney(valor) {
+            return parseFloat(valor).toFixed(2);
+        }
+
+        function mostrarResultados(data) {
+            const tbody = document.getElementById("resultados-tbody");
+            tbody.innerHTML = "";
+            data.forEach((row, i) => {
+                let medal = "";
+                if (i === 0) medal = " 🥇";
+                else if (i === 1) medal = " 🥈";
+                else if (i === 2) medal = " 🥉";
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${i+1} - ${row["Jugador"]}${medal}</td>
+                    <td>${row["Total Puntos"]}</td>
+                    <td>${formatMoney(row["Total Dinero"])} €</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function mostrarClasificacion(data) {
+            const tbody = document.getElementById("clasificacion-tbody");
+            tbody.innerHTML = "";
+            data.forEach((row) => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${row["Jornada"]}</td>
+                    <td>${row["Jugador"]}</td>
+                    <td>${row["Puntos"]}</td>
+                    <td>${formatMoney(row["Dinero"])} €</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        async function init() {
+            const resCSV = await cargarCSV(csvResultados);
+            mostrarResultados(parseCSV(resCSV));
+
+            const clasCSV = await cargarCSV(csvClasificacion);
+            mostrarClasificacion(parseCSV(clasCSV));
+        }
+
+        init();
     </script>
 </body>
 </html>
