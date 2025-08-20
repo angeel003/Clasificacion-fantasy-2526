@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mis Tablas desde Google Sheets</title>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<style>
+  body { font-family: Arial; background: #f0f4f8; padding: 20px; color: #333; }
+  h1 { text-align:center; }
+  .tabs { display:flex; justify-content:center; margin-bottom:20px; }
+  .tab-button { padding:10px 20px; margin:0 5px; cursor:pointer; border:none; border-radius:5px 5px 0 0; background:#ccc; }
+  .tab-button.active { background:#4CAF50; color:white; }
+  table { border-collapse: collapse; width: 100%; margin-top:10px; }
+  th, td { border:1px solid #999; padding:8px; text-align:center; }
+</style>
+</head>
+<body>
+
+<h1>Mis Tablas</h1>
+<div class="tabs">
+  <button class="tab-button active" onclick="showTable(1)">Tabla 1</button>
+  <button class="tab-button" onclick="showTable(2)">Tabla 2</button>
+</div>
+
+<div id="tabla1"></div>
+<div id="tabla2" style="display:none"></div>
+
+<script>
+const url1 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=1331028797&single=true&output=csv';
+const url2 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=0&single=true&output=csv';
+
+function mostrarCSV(url, containerId){
+  Papa.parse(url, {
+    download:true,
+    header:false,
+    complete:function(results){
+      let data = results.data;
+      let html = '<table>';
+      data.forEach((row, i)=>{
+        html += '<tr>';
+        row.forEach(cell=>{
+          html += i===0 ? `<th>${cell}</th>` : `<td>${cell}</td>`;
+        });
+        html += '</tr>';
+      });
+      html += '</table>';
+      document.getElementById(containerId).innerHTML = html;
+    }
+  });
+}
+
+mostrarCSV(url1, 'tabla1');
+mostrarCSV(url2, 'tabla2');
+
+function showTable(n){
+  document.getElementById('tabla1').style.display = n===1 ? 'block' : 'none';
+  document.getElementById('tabla2').style.display = n===2 ? 'block' : 'none';
+  document.querySelectorAll('.tab-button').forEach((btn, i)=>{
+    btn.classList.toggle('active', i === n-1);
+  });
+}
+</script>
+
+</body>
+</html>
