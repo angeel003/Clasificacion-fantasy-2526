@@ -114,6 +114,40 @@ tbody tr:hover {
     font-size: 0.95rem;
 }
 
+/* Noticias */
+.noticia-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.noticia-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.noticia-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #343a40;
+}
+
+.noticia-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.noticia-card p {
+    font-size: 1rem;
+    color: #495057;
+    line-height: 1.5;
+}
 
 /* Footer */
 footer {
@@ -200,7 +234,26 @@ h2 {
     <!-- Más patrocinadores secundarios aquí -->
   </div>
 </section>
+    
+<section class="section-alt">
+  <h2>Noticias</h2>
 
+  <!-- Noticia individual -->
+  <div class="noticia-card">
+    <h3>Título de la noticia 1</h3>
+    <img src="img/noticia1.jpg" alt="Noticia 1">
+    <p>Texto descriptivo de la noticia 1. Aquí puedes poner detalles, enlaces o resúmenes de lo que ocurrió.</p>
+  </div>
+
+  <!-- Otra noticia -->
+  <div class="noticia-card">
+    <h3>Título de la noticia 2</h3>
+    <img src="img/noticia2.jpg" alt="Noticia 2">
+    <p>Texto descriptivo de la noticia 2. Puedes seguir añadiendo tantas noticias como quieras.</p>
+  </div>
+
+  <!-- Más noticias -->
+</section>
 
 
 
@@ -261,9 +314,5 @@ $(document).ready(function(){
 
 </body>
 </html>
-
-
-
-
 
 
