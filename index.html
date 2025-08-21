@@ -78,22 +78,32 @@ tbody tr:hover {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 80px; /* más separación entre los patrocinadores */
     margin-top: 30px;
+    align-items: flex-end; /* alinea la base de los logos */
 }
+
 .patrocinador-card {
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .patrocinador-card img {
-    max-width: 120px;
+    max-width: 140px; /* logos más grandes */
     display: block;
     margin: 0 auto 8px;
 }
+
+/* Primer patrocinador más grande */
+.patrocinador-card:first-child img {
+    max-width: 180px;
+}
+
 .patrocinador-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
+
 
 /* Footer */
 footer {
@@ -233,6 +243,7 @@ $(document).ready(function(){
 
 </body>
 </html>
+
 
 
 
