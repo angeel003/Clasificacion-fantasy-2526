@@ -72,55 +72,48 @@ tbody tr:hover {
 
 /* Últimos 2 */
 .last-2 { background: #ffe6e6; }
-
-/* Patrocinadores */
     
-/* Patrocinador principal más grande */
+/* Patrocinador principal centrado y grande */
+.patrocinador-principal {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
 .patrocinador-principal img {
-    max-width: 220px; /* más grande que los demás */
+    max-width: 250px;  /* Más grande */
+    height: auto;
     display: block;
     margin: 0 auto;
 }
 
-/* Patrocinadores secundarios más pequeños */
-.patrocinador-secundario img {
-    max-width: 120px;
-    display: block;
-    margin: 0 auto;
-}
-
-/* Texto patrocinador principal */
 .patrocinador-principal p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bold;
     color: #343a40;
     margin-top: 10px;
 }
 
-/* Mantener alineación y espaciado */
-.patrocinadores {
+/* Patrocinadores secundarios en fila */
+.patrocinadores-secundarios {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Permite que bajen a otra fila si no caben */
     gap: 50px;
-    align-items: flex-start;
-    margin-top: 30px;
 }
 
-
-.patrocinador-card {
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.patrocinador-card img {
+/* Logos secundarios más pequeños */
+.patrocinadores-secundarios .patrocinador-card img {
     max-width: 120px;
+    height: auto;
     display: block;
-    margin: 0 auto 8px;
+    margin: 0 auto;
 }
-.patrocinador-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+
+.patrocinadores-secundarios .patrocinador-card p {
+    margin-top: 8px;
+    font-size: 0.95rem;
 }
+
 
 /* Footer */
 footer {
@@ -186,26 +179,28 @@ h2 {
 </section>
 
 <section>
-<h2>Nuestros Patrocinadores</h2>
+  <h2>Nuestros Patrocinadores</h2>
 
-<div class="patrocinadores">
-    <!-- Patrocinador oficial principal -->
-    <div class="patrocinador-card patrocinador-principal">
-        <img src="img/Logodessert.jpg" alt="Dessert Links">
-        <p><strong>Patrocinador Oficial de la Liga</strong><br>Dessert Links</p>
-    </div>
+  <!-- Patrocinador oficial principal -->
+  <div class="patrocinador-principal">
+    <img src="img/Logodessert.jpg" alt="Dessert Links">
+    <p><strong>Patrocinador Oficial de la Liga</strong><br>Dessert Links</p>
+  </div>
 
-    <!-- Patrocinadores secundarios -->
-    <div class="patrocinador-card patrocinador-secundario">
-        <img src="img/ThreeWorldStudioLogo.png" alt="Three World">
-        <p>Three<br>World</p>
+  <!-- Fila de patrocinadores secundarios -->
+  <div class="patrocinadores-secundarios">
+    <div class="patrocinador-card">
+      <img src="img/ThreeWorldStudioLogo.png" alt="Three World">
+      <p>Three<br>World</p>
     </div>
-    <div class="patrocinador-card patrocinador-secundario">
-        <img src="img/LogoVPV.png" alt="VPV Paraíso">
-        <p>VPV<br>Paraíso</p>
+    <div class="patrocinador-card">
+      <img src="img/LogoVPV.png" alt="VPV Paraíso">
+      <p>VPV<br>Paraíso</p>
     </div>
-</div>
+    <!-- Más patrocinadores secundarios aquí -->
+  </div>
 </section>
+
 
 
 
@@ -266,6 +261,7 @@ $(document).ready(function(){
 
 </body>
 </html>
+
 
 
 
