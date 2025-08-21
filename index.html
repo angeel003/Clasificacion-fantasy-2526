@@ -247,6 +247,7 @@ h2 {
 </div>
 </section>
 
+     <!-- Jornada a jornada todas juntas
 <section class="section-alt">
 <h2>Jornada a Jornada</h2>
 <div class="table-responsive">
@@ -264,7 +265,36 @@ h2 {
 </table>
 </div>
 </section>
+-->
+<section class="section-alt">
+  <h2>Jornada a Jornada</h2>
 
+  <!-- Desplegable para seleccionar la jornada -->
+  <div style="margin-bottom:30px;">
+    <label for="jornadaSelect" style="font-weight:bold; font-size:1.1rem;">Selecciona jornada: </label>
+    <select id="jornadaSelect" style="padding:5px 10px; font-size:1rem;">
+      <option value="">-- Todas las jornadas --</option>
+      <!-- Las jornadas se llenarán dinámicamente con JS -->
+    </select>
+  </div>
+
+  <div class="table-responsive">
+    <table id="weeklyTable">
+      <thead>
+        <tr>
+          <th>Jornada</th>
+          <th>Jugador</th>
+          <th>Puntos</th>
+          <th>Ranking</th>
+          <th>Dinero</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+     
 <section>
   <h2>Nuestros Patrocinadores</h2>
 
@@ -355,10 +385,13 @@ function populateGlobalTable(data) {
     }
 }
 
+let weeklyData = []; // Guardamos todos los datos de la tabla semanal
+
 function populateWeeklyTable(data) {
     const lines = data.split("\n").filter(line => line.trim() !== "");
-    const tbody = $("#weeklyTable tbody");
-    tbody.empty();
+    weeklyData = []; // Limpiamos datos anteriores
+    let jornadasSet = new Set(); // Para rellenar el select
+
     for(let i=1;i<lines.length;i++){
         const cols = lines[i].split(",");
         if(cols.length < 5) continue;
@@ -366,10 +399,44 @@ function populateWeeklyTable(data) {
         const jugador = cols[1].trim();
         const puntos = cols[2].trim();
         const ranking = cols[3].trim();
-        const dinero = cols[4].trim().replace(/^"|"$/g, '') + " €"; // decimales y €
-        tbody.append(`<tr><td>${jornada}</td><td>${jugador}</td><td>${puntos}</td><td>${ranking}</td><td>${dinero}</td></tr>`);
+        const dinero = cols[4].trim().replace(/^"|"$/g, '') + " €";
+        weeklyData.push({jornada, jugador, puntos, ranking, dinero});
+        jornadasSet.add(jornada);
     }
+
+    // Rellenar el select con jornadas únicas
+    const select = $("#jornadaSelect");
+    select.find("option:gt(0)").remove(); // eliminamos opciones previas
+    Array.from(jornadasSet).sort((a,b)=>a-b).forEach(j => {
+        select.append(`<option value="${j}">Jornada ${j}</option>`);
+    });
+
+    // Mostrar inicialmente todas las jornadas
+    renderWeeklyTable();
 }
+
+// Función para renderizar tabla filtrando por jornada
+function renderWeeklyTable(selectedJornada = "") {
+    const tbody = $("#weeklyTable tbody");
+    tbody.empty();
+    weeklyData.forEach(row => {
+        if(selectedJornada === "" || row.jornada === selectedJornada){
+            tbody.append(`<tr>
+                <td>${row.jornada}</td>
+                <td>${row.jugador}</td>
+                <td>${row.puntos}</td>
+                <td>${row.ranking}</td>
+                <td>${row.dinero}</td>
+            </tr>`);
+        }
+    });
+}
+
+// Detectar cambio en el select
+$("#jornadaSelect").on("change", function(){
+    renderWeeklyTable($(this).val());
+});
+
 
 $(document).ready(function(){
     loadCSV(globalCSV, populateGlobalTable);
@@ -379,5 +446,4 @@ $(document).ready(function(){
 
 </body>
 </html>
-
 
