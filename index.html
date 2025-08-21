@@ -74,13 +74,27 @@ tbody tr:hover {
 .last-2 { background: #ffe6e6; }
 
 /* Patrocinadores */
+    
+/* Patrocinador principal más grande */
+.patrocinador-principal img {
+    max-width: 200px; /* más grande que los demás */
+}
+
+/* Patrocinadores secundarios más pequeños */
+.patrocinador-secundario img {
+    max-width: 120px;
+}
+
+/* Mantener alineación y espaciado */
 .patrocinadores {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 50px;
+    align-items: flex-start; /* para que los tamaños diferentes no desalineen */
     margin-top: 30px;
 }
+
 .patrocinador-card {
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -161,20 +175,24 @@ h2 {
 <section>
 <h2>Nuestros Patrocinadores</h2>
 <div class="patrocinadores">
-<div class="patrocinador-card">
-<img src="img/ThreeWorldStudioLogo.png" alt="Three World">
-<p>Three<br>World</p>
-</div>
-<div class="patrocinador-card">
-<img src="img/Logodessert.jgp" alt="Dessert Links">
-<p>Dessert<br>Links</p>
-</div>
-<div class="patrocinador-card">
-<img src="img/LogoVPV.png" alt="VPV Paraíso">
-<p>VPV<br>Paraíso</p>
-</div>
+    <!-- Patrocinador principal -->
+    <div class="patrocinador-card patrocinador-principal">
+        <img src="img/Logodessert.jpg" alt="Dessert Links">
+        <p>Dessert<br>Links</p>
+    </div>
+
+    <!-- Patrocinadores secundarios -->
+    <div class="patrocinador-card patrocinador-secundario">
+        <img src="img/ThreeWorldStudioLogo.png" alt="Three World">
+        <p>Three<br>World</p>
+    </div>
+    <div class="patrocinador-card patrocinador-secundario">
+        <img src="img/LogoVPV.png" alt="VPV Paraíso">
+        <p>VPV<br>Paraíso</p>
+    </div>
 </div>
 </section>
+
 
 <footer>
 <p>© 2025 Resultados de la Desert Links League 25/26. Es lo que hay majo</p>
@@ -233,4 +251,5 @@ $(document).ready(function(){
 
 </body>
 </html>
+
 
