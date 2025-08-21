@@ -77,12 +77,24 @@ tbody tr:hover {
     
 /* Patrocinador principal más grande */
 .patrocinador-principal img {
-    max-width: 200px; /* más grande que los demás */
+    max-width: 220px; /* más grande que los demás */
+    display: block;
+    margin: 0 auto;
 }
 
 /* Patrocinadores secundarios más pequeños */
 .patrocinador-secundario img {
     max-width: 120px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Texto patrocinador principal */
+.patrocinador-principal p {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #343a40;
+    margin-top: 10px;
 }
 
 /* Mantener alineación y espaciado */
@@ -91,9 +103,10 @@ tbody tr:hover {
     justify-content: center;
     flex-wrap: wrap;
     gap: 50px;
-    align-items: flex-start; /* para que los tamaños diferentes no desalineen */
+    align-items: flex-start;
     margin-top: 30px;
 }
+
 
 .patrocinador-card {
     text-align: center;
@@ -174,11 +187,12 @@ h2 {
 
 <section>
 <h2>Nuestros Patrocinadores</h2>
+
 <div class="patrocinadores">
-    <!-- Patrocinador principal -->
+    <!-- Patrocinador oficial principal -->
     <div class="patrocinador-card patrocinador-principal">
         <img src="img/Logodessert.jpg" alt="Dessert Links">
-        <p>Dessert<br>Links</p>
+        <p><strong>Patrocinador Oficial de la Liga</strong><br>Dessert Links</p>
     </div>
 
     <!-- Patrocinadores secundarios -->
@@ -192,6 +206,7 @@ h2 {
     </div>
 </div>
 </section>
+
 
 
 <footer>
@@ -251,5 +266,6 @@ $(document).ready(function(){
 
 </body>
 </html>
+
 
 
