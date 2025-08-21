@@ -153,17 +153,18 @@ tbody tr:hover {
 footer {
     background: #343a40;
     color: white;
-    padding: 20px 0;
+    padding: 20px 0;         /* padding arriba/abajo */
     text-align: center;
-    width: 100%;         /* ocupa todo el ancho */
+    width: 100%;              /* ocupa todo el ancho */
 }
 
 footer p {
     font-size: 0.95rem;
-    margin: 0.8;           /* sin margen lateral */
+    margin: 0 10px;           /* margen lateral pequeño solo al texto */
     opacity: 0.8;
+    word-wrap: break-word;    /* rompe palabras largas si es necesario */
+    white-space: normal;      /* permite saltos automáticos de línea */
 }
-
 
 /* Titulos secciones */
 h2 {
@@ -349,6 +350,7 @@ $(document).ready(function(){
 
 </body>
 </html>
+
 
 
 
