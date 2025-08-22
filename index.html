@@ -17,6 +17,7 @@ body {
     margin: 0;
 }
 
+     
 /* Header */
 header {
     background: linear-gradient(135deg, #343a40, #495057);
@@ -248,6 +249,38 @@ h2 {
         Se insta a los señores Jorge Andrade Mariscal y Jorge Alonso Rivas a <strong>regularizar su situación de manera inmediata</strong>, evitando así mayores complicaciones y/o sanciones; y
         garantizando así la transparencia y equidad en la gestión del torneo.
   </p>
+     <div id="contador-morosos" style="font-size: 24px; font-weight: bold; color: red; margin-top: 20px; text-align:center;">
+⏳ Desde que se solicitó el pago han pasado : <span id="tiempo-transcurrido"></span>
+</div>
+
+<script>
+// Fecha inicial del impago
+const fechaInicio = new Date("2025-08-11T12:00:00");
+
+function actualizarContador() {
+  const ahora = new Date();
+  const diferencia = ahora - fechaInicio;
+
+  if (diferencia < 0) {
+    document.getElementById("tiempo-transcurrido").innerText = "Aún no ha pasado nada.";
+    return;
+  }
+
+  const segundosTotales = Math.floor(diferencia / 1000);
+  const dias = Math.floor(segundosTotales / (3600 * 24));
+  const horas = Math.floor((segundosTotales % (3600 * 24)) / 3600);
+  const minutos = Math.floor((segundosTotales % 3600) / 60);
+  const segundos = segundosTotales % 60;
+
+  document.getElementById("tiempo-transcurrido").innerText =
+    `${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos`;
+}
+
+// Actualiza cada segundo
+setInterval(actualizarContador, 1000);
+actualizarContador();
+</script>
+
 </section>
 
     
@@ -467,5 +500,3 @@ $(document).ready(function(){
 
 </body>
 </html>
-
-
