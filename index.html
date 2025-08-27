@@ -411,6 +411,7 @@ actualizarContador();
 <p>Es lo que hay majo</p>
 
 </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
@@ -532,38 +533,41 @@ $(document).ready(function(){
 const noticiasCSV = "https://docs.google.com/spreadsheets/d/e/TU_ID_DE_EXPORT/pub?gid=0&single=true&output=csv";
 
 function populateNoticias(data) {
-    const lines = data.split("\n").filter(line => line.trim() !== "");
-    const container = $("section.section-alt:last"); // la última sección con "Noticias"
-    container.empty(); // limpiar el contenido
+    Papa.parse(data, {
+        header: true,   // usa la primera fila como encabezado
+        skipEmptyLines: true,
+        complete: function(results) {
+            const rows = results.data;
+            const container = $("section.section-alt:last");
+            container.empty();
+            container.append("<h2>Resúmenes de Jornada</h2>");
 
-    container.append("<h2>Resúmenes de Jornada</h2>");
+            if (rows.length === 0) {
+                container.append(`
+                  <div class="noticia-vacia">
+                    <p>Vaya, ¡aún no hay nada aquí! 😅</p>
+                  </div>
+                `);
+                return;
+            }
 
-    if (lines.length <= 1) {
-        container.append(`
-          <div class="noticia-vacia">
-            <p>Vaya, ¡aún no hay nada aquí! 😅</p>
-          </div>
-        `);
-        return;
-    }
+            rows.forEach(row => {
+                const titulo = row["Titular"]?.trim() || "";
+                const imagen = row["Imagen"]?.trim() || "";
+                const texto  = row["Texto"]?.trim() || "";
 
-    for (let i = 1; i < lines.length; i++) {
-        const cols = lines[i].split(",");
-        if (cols.length < 3) continue;
-
-        const titulo = cols[0].trim();
-        const imagen = cols[1].trim();
-        const texto  = cols[2].trim();
-
-        container.append(`
-          <div class="noticia-card">
-            <h3>${titulo}</h3>
-            ${imagen ? `<img src="${imagen}" alt="${titulo}">` : ""}
-            <p>${texto}</p>
-          </div>
-        `);
-    }
+                container.append(`
+                  <div class="noticia-card">
+                    <h3>${titulo}</h3>
+                    ${imagen ? `<img src="${imagen}" alt="${titulo}">` : ""}
+                    <p>${texto}</p>
+                  </div>
+                `);
+            });
+        }
+    });
 }
+
 
 $(document).ready(function(){
     loadCSV(globalCSV, populateGlobalTable);
@@ -574,6 +578,7 @@ $(document).ready(function(){
 
 </body>
 </html>
+
 
 
 
