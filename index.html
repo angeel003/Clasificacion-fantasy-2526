@@ -415,6 +415,8 @@ actualizarContador();
 <script>
 const globalCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=1331028797&single=true&output=csv";
 const weeklyCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=0&single=true&output=csv";
+const noticiasCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=1673676664&single=true&output=csv"; // 👈 aquí tu CSV de resúmenes
+     
 
 function showError(msg) {
   console.error(msg);
@@ -524,10 +526,54 @@ $(document).ready(function(){
     loadCSV(globalCSV, populateGlobalTable);
     loadCSV(weeklyCSV, populateWeeklyTable);
 });
+
+<script>
+const noticiasCSV = "https://docs.google.com/spreadsheets/d/e/TU_ID_DE_EXPORT/pub?gid=0&single=true&output=csv";
+
+function populateNoticias(data) {
+    const lines = data.split("\n").filter(line => line.trim() !== "");
+    const container = $("section.section-alt:last"); // la última sección con "Noticias"
+    container.empty(); // limpiar el contenido
+
+    container.append("<h2>Resúmenes de Jornada</h2>");
+
+    if (lines.length <= 1) {
+        container.append(`
+          <div class="noticia-vacia">
+            <p>Vaya, ¡aún no hay nada aquí! 😅</p>
+          </div>
+        `);
+        return;
+    }
+
+    for (let i = 1; i < lines.length; i++) {
+        const cols = lines[i].split(",");
+        if (cols.length < 3) continue;
+
+        const titulo = cols[0].trim();
+        const imagen = cols[1].trim();
+        const texto  = cols[2].trim();
+
+        container.append(`
+          <div class="noticia-card">
+            <h3>${titulo}</h3>
+            ${imagen ? `<img src="${imagen}" alt="${titulo}">` : ""}
+            <p>${texto}</p>
+          </div>
+        `);
+    }
+}
+
+$(document).ready(function(){
+    loadCSV(globalCSV, populateGlobalTable);
+    loadCSV(weeklyCSV, populateWeeklyTable);
+    loadCSV(noticiasCSV, populateNoticias); // 👈 se carga también la hoja de noticias
+});
 </script>
 
 </body>
 </html>
+
 
 
 
