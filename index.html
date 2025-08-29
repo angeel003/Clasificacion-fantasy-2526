@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Dessert Links League 25/26</title>
+<title>DESARROLLO Dessert Links League 25/26</title>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
      <!-- Importar Golos Text desde Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@600&display=swap" rel="stylesheet">
@@ -274,7 +274,16 @@ h2 {
   </div>
 </section>
 
-     
+    
+<section class="section-alt">
+  <div class="container">
+    <h2>Resumen semanal</h2>
+    <div class="row" id="resumenes"></div>
+  </div>
+</section>
+
+
+
 <section>
   <h2>Nuestros Patrocinadores</h2>
 
@@ -299,37 +308,8 @@ h2 {
   </div>
       
   </section>
-    
-<section class="section-alt">
-  <h2>Resumen semanal</h2>
-  <!-- Noticia individual  -->
-  <div class="noticia-card">
-    <h3><strong>Segunda jornada de la Liga Fantasy Dessert Links: </strong> drama, sorpresas y un colista histórico</h3>
-    <!-- <img src="img/noticia1.jpg" alt="Noticia 1"> --> 
-       <p>  La segunda fecha de la Liga Fantasy dejó titulares dignos de un domingo en carrusel. La clasificación empieza a coger forma, con viejos conocidos arriba,
-            revelaciones inesperadas y un colista que ya escribe su nombre en las páginas más oscuras del campeonato.</p>
-       <p>  Ruliruli12 se mantiene en lo alto gracias a la sorprendente estrella de Buchanan, que le ha dado oxígeno y le permite liderar la tabla con solvencia.</p>
-       <p>  Davidlo se agarra al segundo puesto de la mano de Rafa Marín, que con sus 15 puntos se ha erigido como el líder silencioso del vestuario.</p>
-       <p> El siempre polémico Nicolás Maduro encontró en Luis Milla la brújula que necesitaba. Su equipo, irregular en la primera jornada, ahora empieza a sumar con más seriedad.</p>
-       <p>  Por encima de varios machos, viene Caba Cabra, que pese a lograr mejorar su primera jornada, se coloca solo un punto por encima de Alejandios.</p>
-       <p> Este último, con gran olfato, puso a Huijsen de capitán y casi logra darle la vuelta a la tortilla.</p>
-       <p> Cipotenegro repite patrón con Pedri, sin terminar de despegar. Mientras tanto, Gijonudo Cornudo “paga” su falta de reflejos y termina empatado a puntos con Mariotitan, que tampoco levanta cabeza.</p>
-       <p> El friki de Ángel, penúltimo, no puede ni presumir de Pepé: sus 14 puntos saben a poco cuando el resto del equipo naufraga.</p>
-       <p> Pero el verdadero terremoto llega cerrando la tabla: Jorgeeandradee, rebautizado ya como “Fraudiscal”, logra la hazaña inversa con solo 13 ridículos puntos. La afición pide explicaciones, pero él ya ha hecho historia.</p>
 
-  </div>
-<!--
-  <!-- Otra noticia 
-  <div class="noticia-card">
-    <h3>Título de la noticia 2</h3>
-    <img src="img/noticia2.jpg" alt="Noticia 2">
-    <p>Texto descriptivo de la noticia 2. Puedes seguir añadiendo tantas noticias como quieras.</p>
-  </div>
-
-  <!-- Más noticias -->
-</section>
--->
-
+     
 
 <footer>
 <p>© Dessert Links League 2025-2026</p>   
@@ -453,13 +433,44 @@ $(document).ready(function(){
     loadCSV(weeklyCSV, populateWeeklyTable);
 });
 </script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+<script>
+  const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAkMHyuIxrYksIUiAbQcXptX-Mun1KfVY3jkfBa8tJVb7kPZ57_4hV0vqyJUqrsMEHkssZ30vyOur4/pub?gid=1673676664&single=true&output=csv";
 
+  Papa.parse(sheetUrl, {
+    download: true,
+    header: true,
+    complete: function(results) {
+      const data = results.data;
+      const container = document.getElementById("resumenes");
+
+      data.forEach(row => {
+        if(!row.jornada) return;
+        container.innerHTML += `
+          <div class="col-md-6">
+            <div class="noticia-card">
+              ${row.imagen ? `<img src="${row.imagen}" alt="Jornada ${row.jornada}">` : ''}
+              <h3>${row.titulo}</h3>
+              <span class="badge badge-dark">Jornada ${row.jornada}</span>
+              <span class="badge badge-secondary">${row.fecha}</span>
+              <p>${row.resumen}</p>
+              <a class="btn btn-sm btn-outline-primary mt-2" data-toggle="collapse" href="#detalle${row.jornada}">
+                Leer más
+              </a>
+              <div class="collapse mt-2" id="detalle${row.jornada}">
+                <p>${row.texto_completo}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+  });
+</script>
+
+
+     
 </body>
 </html>
-
-
-
-
-
-
 
