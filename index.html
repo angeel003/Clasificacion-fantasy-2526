@@ -167,9 +167,11 @@ tbody tr:hover {
     max-height: 200px;  /* altura máxima */
     width: auto;        /* mantiene proporción */
     height: auto;       /* mantiene proporción */
+    display: block;     /* necesario para centrar con margin */
+    margin: 0 auto 12px auto; /* arriba 0, centrado, abajo 12px */
     border-radius: 8px;
-    margin-bottom: 12px;
 }
+
 
 
 .noticia-card p {
@@ -485,6 +487,7 @@ $(document).ready(function(){
      
 </body>
 </html>
+
 
 
 
