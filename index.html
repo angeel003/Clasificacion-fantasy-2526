@@ -459,7 +459,7 @@ $(document).ready(function(){
                 Leer más
               </a>
               <div class="collapse mt-2" id="detalle${row.jornada}">
-                <p>${row.texto_completo}</p>
+                <p>${row.texto_completo.replace(/\n/g, '<br>')}</p>
               </div>
             </div>
           </div>
@@ -473,4 +473,5 @@ $(document).ready(function(){
      
 </body>
 </html>
+
 
