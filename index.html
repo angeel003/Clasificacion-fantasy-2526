@@ -210,6 +210,15 @@ h2 {
     font-weight: 600;
     letter-spacing: 0.5px;
 }
+
+.resumen {
+  font-style: italic;      /* cursiva */
+  font-weight: 500;        /* seminegrita */
+  font-size: 1.08rem;      /* un poquito más grande */
+  color: #343a40;          /* opcional, más contraste */
+  margin-bottom: 10px;     /* separación del botón */
+}
+
 </style>
 </head>
 <body>
@@ -454,7 +463,7 @@ $(document).ready(function(){
               <h3>${row.titulo}</h3>
               <span class="badge badge-dark">Jornada ${row.jornada}</span>
               <span class="badge badge-secondary">${row.fecha}</span>
-              <p>${row.resumen}</p>
+              <p class="resumen" >${row.resumen}</p>
               <a class="btn btn-sm btn-outline-primary mt-2" data-toggle="collapse" href="#detalle${row.jornada}">
                 Leer más
               </a>
@@ -473,6 +482,7 @@ $(document).ready(function(){
      
 </body>
 </html>
+
 
 
 
