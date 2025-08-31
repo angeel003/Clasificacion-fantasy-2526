@@ -1,9 +1,12 @@
-// sw.js -> Service Worker para forzar que siempre se coja la versión nueva
-self.addEventListener("install", () => self.skipWaiting());
+// sw.js -> Service Worker sin caché
+self.addEventListener("install", (event) => {
+  self.skipWaiting();
+});
 
-self.addEventListener("activate", () => clients.claim());
+self.addEventListener("activate", (event) => {
+  event.waitUntil(clients.claim());
+});
 
 self.addEventListener("fetch", (event) => {
-  // Siempre pide los archivos al servidor (GitHub Pages), no usa caché
   event.respondWith(fetch(event.request));
 });
