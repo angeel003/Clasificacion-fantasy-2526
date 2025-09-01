@@ -427,13 +427,21 @@ function populateWeeklyTable(data) {
     // Rellenar el select con jornadas únicas
     const select = $("#jornadaSelect");
     select.find("option:gt(0)").remove(); // eliminamos opciones previas
-    Array.from(jornadasSet).sort((a,b)=>a-b).forEach(j => {
+
+    // Ordenamos las jornadas numéricamente
+    const jornadasArray = Array.from(jornadasSet).sort((a,b)=> parseInt(a) - parseInt(b));
+    jornadasArray.forEach(j => {
         select.append(`<option value="${j}">Jornada ${j}</option>`);
     });
 
-    // Mostrar inicialmente todas las jornadas
-    renderWeeklyTable();
+    // Seleccionamos la última jornada por defecto
+    const ultimaJornada = jornadasArray[jornadasArray.length - 1];
+    select.val(ultimaJornada);
+
+    // Renderizar solo la última jornada al inicio
+    renderWeeklyTable(ultimaJornada);
 }
+
 
 // Función para renderizar tabla filtrando por jornada
 function renderWeeklyTable(selectedJornada = "") {
@@ -472,33 +480,55 @@ $(document).ready(function(){
     download: true,
     header: true,
     complete: function(results) {
-      const data = results.data;
+      const data = results.data.reverse().filter(row => row.jornada); // los más recientes primero
       const container = document.getElementById("resumenes");
 
-      data.reverse().forEach(row => {
-        if(!row.jornada) return;
-        container.innerHTML += `
-          <div class="col-md-6">
-            <div class="noticia-card">
-              ${row.imagen ? `<img src="${row.imagen}" alt="Jornada ${row.jornada}">` : ''}
-              <h3>${row.titulo}</h3>
-              <span class="badge badge-dark">Jornada ${row.jornada}</span>
-              <span class="badge badge-secondary">${row.fecha}</span>
-              <p class="resumen" >${row.resumen}</p>
-              <a class="btn btn-sm btn-outline-primary mt-2" data-toggle="collapse" href="#detalle${row.jornada}">
-                Leer más
-              </a>
-              <div class="collapse mt-2" id="detalle${row.jornada}">
-                <p>${row.texto_completo.replace(/\n/g, '<br>')}</p>
+      function renderResumenes(limit = 2) {
+        container.innerHTML = "";
+        data.slice(0, limit).forEach(row => {
+          container.innerHTML += `
+            <div class="col-md-6">
+              <div class="noticia-card">
+                ${row.imagen ? `<img src="${row.imagen}" alt="Jornada ${row.jornada}">` : ''}
+                <h3>${row.titulo}</h3>
+                <span class="badge badge-dark">Jornada ${row.jornada}</span>
+                <span class="badge badge-secondary">${row.fecha}</span>
+                <p class="resumen">${row.resumen}</p>
+                <a class="btn btn-sm btn-outline-primary mt-2" data-toggle="collapse" href="#detalle${row.jornada}">
+                  Leer más
+                </a>
+                <div class="collapse mt-2" id="detalle${row.jornada}">
+                  <p>${row.texto_completo.replace(/\n/g, '<br>')}</p>
+                </div>
               </div>
             </div>
-          </div>
-        `;
-      });
+          `;
+        });
+
+        // Si todavía quedan más por mostrar, ponemos botón
+        const mostrarMas = document.getElementById("mostrarMasBtn");
+        if (limit < data.length) {
+          if (!mostrarMas) {
+            const btn = document.createElement("div");
+            btn.innerHTML = `
+              <div class="col-12 text-center mt-3">
+                <button id="mostrarMasBtn" class="btn btn-primary">Mostrar más</button>
+              </div>
+            `;
+            container.appendChild(btn);
+            document.getElementById("mostrarMasBtn").addEventListener("click", () => {
+              renderResumenes(data.length); // mostrar todos
+            });
+          }
+        }
+      }
+
+      // Mostrar solo los 2 últimos al inicio
+      renderResumenes(2);
     }
   });
 </script>
- 
+
      
 </body>
 </html>
