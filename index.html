@@ -444,21 +444,32 @@ function populateWeeklyTable(data) {
 
 
 // Función para renderizar tabla filtrando por jornada
+// Función para renderizar tabla filtrando por jornada
 function renderWeeklyTable(selectedJornada = "") {
     const tbody = $("#weeklyTable tbody");
     tbody.empty();
-    weeklyData.forEach(row => {
-        if(selectedJornada === "" || row.jornada === selectedJornada){
-            tbody.append(`<tr>
-                <td>${row.jornada}</td>
-                <td>${row.jugador}</td>
-                <td>${row.puntos}</td>
-                <td>${row.ranking}</td>
-                <td>${row.dinero}</td>
-            </tr>`);
-        }
+
+    let rowsToRender = weeklyData;
+
+    if (selectedJornada !== "") {
+        // Filtrar por jornada específica
+        rowsToRender = weeklyData.filter(row => row.jornada === selectedJornada);
+    } else {
+        // Todas las jornadas: ordenar por puntos de mayor a menor
+        rowsToRender = [...weeklyData].sort((a, b) => parseFloat(b.puntos) - parseFloat(a.puntos));
+    }
+
+    rowsToRender.forEach(row => {
+        tbody.append(`<tr>
+            <td>${row.jornada}</td>
+            <td>${row.jugador}</td>
+            <td>${row.puntos}</td>
+            <td>${row.ranking}</td>
+            <td>${row.dinero}</td>
+        </tr>`);
     });
 }
+
 
 // Detectar cambio en el select
 $("#jornadaSelect").on("change", function(){
@@ -532,6 +543,4 @@ $(document).ready(function(){
      
 </body>
 </html>
-
-
 
