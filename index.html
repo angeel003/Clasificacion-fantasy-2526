@@ -475,7 +475,7 @@ $(document).ready(function(){
       const data = results.data;
       const container = document.getElementById("resumenes");
 
-      data.forEach(row => {
+      data.reverse().forEach(row => {
         if(!row.jornada) return;
         container.innerHTML += `
           <div class="col-md-6">
@@ -502,25 +502,6 @@ $(document).ready(function(){
      
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
